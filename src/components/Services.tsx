@@ -8,58 +8,54 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-const ArrowRightIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
-  </svg>
-);
-
 const services = [
   {
     id: 1,
-    icon: "🏡",
     title: "Property Sales",
-    description: "From listing to closing, we handle every detail of your property sale to maximize your return on investment.",
-    size: "large",
-    className: "bg-dark-text pt-16 pb-12 px-12 md:col-span-12 lg:col-span-5 text-white rounded-2xl",
-    linkText: "Learn More",
-    iconSize: "text-5xl",
+    description: "From luxury listings to high-stakes closing, we handle every detail of your property sale to maximize your return on investment and ensure a seamless transition of legacy assets.",
+    category: "01 / TRANSACTIONAL",
   },
   {
     id: 2,
-    icon: "🔑",
     title: "Property Rentals",
-    description: "Finding reliable tenants and managing your rental property with precision. Stress-free passive income starts here.",
-    size: "medium",
-    className: "bg-white border border-[#E5E0D8] p-10 md:col-span-6 lg:col-span-3 text-dark-text rounded-2xl",
-    linkText: "Rentals",
-    iconSize: "text-4xl",
+    description: "Curating elite tenant portfolios and managing premium rental properties with clinical precision. Our goal is to secure high-yield, low-maintenance passive income for our clients.",
+    category: "02 / PORTFOLIO",
   },
   {
     id: 3,
-    icon: "📊",
     title: "Property Valuation",
-    description: "Get an accurate market valuation of your property — free of charge. No obligation, just expert advice.",
-    size: "medium",
-    className: "bg-white border-l-4 border-l-gold border border-[#E5E0D8] p-10 md:col-span-6 lg:col-span-4 text-dark-text rounded-2xl",
-    linkText: "Get Valuation",
-    iconSize: "text-4xl",
+    description: "Leverage our proprietary market analysis tools for an accurate valuation. We provide deep-dive insights into neighborhood appreciation and long-term investment viability.",
+    category: "03 / ANALYTICS",
   },
 ];
 
 export function Services() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const itemsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const lineRef = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     if (!containerRef.current) return;
 
     const ctx = gsap.context(() => {
-      cardsRef.current.forEach((card, index) => {
-        if (!card) return;
+      // Animate left section title
+      gsap.from(".services-title", {
+        x: -50,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 75%",
+        },
+      });
+
+      // Animate service items
+      itemsRef.current.forEach((item, index) => {
+        if (!item) return;
         gsap.fromTo(
-          card,
-          { y: 60, opacity: 0 },
+          item,
+          { y: 30, opacity: 0 },
           {
             y: 0,
             opacity: 1,
@@ -67,9 +63,28 @@ export function Services() {
             delay: index * 0.2,
             ease: "power3.out",
             scrollTrigger: {
-              trigger: containerRef.current,
-              start: "top 80%",
-              toggleActions: "play none none none",
+              trigger: item,
+              start: "top 85%",
+            },
+          }
+        );
+      });
+
+      // Animate decorative lines
+      lineRef.current.forEach((line, index) => {
+        if (!line) return;
+        gsap.fromTo(
+          line,
+          { scaleX: 0 },
+          {
+            scaleX: 1,
+            duration: 1.5,
+            delay: index * 0.2,
+            ease: "expo.out",
+            transformOrigin: "left",
+            scrollTrigger: {
+              trigger: line,
+              start: "top 90%",
             },
           }
         );
@@ -80,41 +95,66 @@ export function Services() {
   }, []);
 
   return (
-    <section id="services" className="py-32 px-16 md:px-24 bg-[#FAFAF8]">
+    <section id="services" className="py-32 px-6 md:px-24 bg-[#0A0A0A] text-white">
       <div ref={containerRef} className="max-w-7xl mx-auto">
-        <div className="mb-20">
-          <span className="text-gold text-[11px] uppercase tracking-[0.25em] font-medium mb-4 block">
-            WHAT WE DO
-          </span>
-          <h2 className="text-dark-text text-6xl font-heading leading-tight max-w-2xl">
-            Complete real estate <br /> services under one roof.
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-          {services.map((service, index) => (
-            <div
-              key={service.id}
-              ref={(el) => { cardsRef.current[index] = el; }}
-              className={`${service.className} service-card group flex flex-col justify-between hover:shadow-2xl transition-all duration-500`}
-            >
-              <div>
-                <span className={`${service.iconSize} block mb-8 transition-transform group-hover:scale-110 duration-300`}>
-                  {service.icon}
-                </span>
-                <h3 className={`font-heading ${service.size === 'large' ? 'text-4xl' : 'text-2xl'} mb-4 font-bold`}>
-                  {service.title}
-                </h3>
-                <p className={`font-body leading-relaxed ${service.size === 'large' ? 'text-white/60 text-lg' : 'text-muted-text text-md'}`}>
-                  {service.description}
-                </p>
-              </div>
-
-              <div className="mt-12 flex items-center gap-2 group-hover:gap-4 transition-all text-gold font-semibold text-sm cursor-pointer border-t border-white/10 pt-6">
-                {service.linkText} <ArrowRightIcon />
-              </div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
+          
+          {/* Left Side: Strategic Branding */}
+          <div className="lg:col-span-5 lg:sticky lg:top-32 h-fit">
+            <div className="services-title">
+              <span className="text-gold text-[11px] uppercase tracking-[0.3em] font-light mb-6 block border-l-2 border-gold pl-4">
+                What We Do
+              </span>
+              <h2 className="text-4xl md:text-6xl font-heading leading-[1.1] mb-8">
+                Complete real estate <br /> 
+                <span className="italic text-white/90">services</span> under <br /> 
+                one roof.
+              </h2>
+              <p className="text-white/50 font-body text-lg max-w-sm leading-relaxed">
+                We bridge the gap between luxury living and architectural precision, 
+                providing a boutique experience for the discerning investor.
+              </p>
             </div>
-          ))}
+          </div>
+
+          {/* Right Side: Detailed Service List */}
+          <div className="lg:col-span-7 flex flex-col">
+            {services.map((service, index) => (
+              <div 
+                key={service.id} 
+                ref={(el) => { itemsRef.current[index] = el; }}
+                className="group py-12 first:pt-0 last:pb-0"
+              >
+                <div 
+                  ref={(el) => { lineRef.current[index] = el; }}
+                  className="h-[1px] bg-white/10 w-full mb-12 origin-left"
+                />
+                <div className="flex flex-col md:flex-row md:items-start gap-8 md:gap-16">
+                  <span className="text-gold text-[10px] font-mono tracking-widest pt-2">
+                    {service.category}
+                  </span>
+                  <div>
+                    <h3 className="text-2xl md:text-3xl font-heading font-bold italic mb-6 group-hover:text-gold transition-colors duration-500">
+                      {service.title}
+                    </h3>
+                    <p className="text-white/60 font-body text-lg leading-relaxed max-w-xl">
+                      {service.description}
+                    </p>
+                    <div className="mt-8 overflow-hidden">
+                      <button className="flex items-center gap-2 text-white/40 hover:text-gold text-sm uppercase tracking-widest font-medium transition-all duration-300">
+                        Explore Service
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="translate-y-[-1px]">
+                          <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+            <div className="h-[1px] bg-white/10 w-full mt-12" />
+          </div>
+
         </div>
       </div>
     </section>
