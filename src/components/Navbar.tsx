@@ -44,7 +44,12 @@ export function Navbar() {
             <Button 
               variant="ghost" 
               size="sm" 
-              className="lg:hidden rounded-full px-4 gap-2 hover:bg-black/5 dark:hover:bg-white/5 text-muted-foreground hover:text-foreground"
+              className={cn(
+                "lg:hidden rounded-full px-4 gap-2 transition-colors",
+                isScrolled 
+                  ? "hover:bg-black/5 dark:hover:bg-white/5 text-muted-foreground hover:text-foreground" 
+                  : "hover:bg-white/10 text-white/80 hover:text-white"
+              )}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
@@ -57,7 +62,10 @@ export function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="text-[10px] font-bold tracking-[0.2em] uppercase transition-colors hover:text-brand-blue text-muted-foreground/60"
+                  className={cn(
+                    "text-[10px] font-bold tracking-[0.2em] uppercase transition-colors hover:text-brand-blue",
+                    isScrolled ? "text-muted-foreground/60" : "text-white/60 hover:text-white"
+                  )}
                 >
                   {link.name}
                 </Link>
@@ -69,11 +77,14 @@ export function Navbar() {
           <div className="flex justify-center">
             <Link 
               href="/" 
-              className="font-heading text-xl font-bold tracking-tighter whitespace-nowrap text-foreground flex items-center gap-3 group"
+              className={cn(
+                "font-heading text-xl font-bold tracking-tighter whitespace-nowrap flex items-center gap-3 group transition-colors",
+                isScrolled ? "text-foreground" : "text-white"
+              )}
             >
               <span className="text-brand-blue group-hover:rotate-[360deg] transition-transform duration-1000">✦</span> 
               <span className="flex items-baseline gap-1">
-                HAVEN <span className="text-[10px] text-muted-foreground font-light">&</span> CO
+                HAVEN <span className={cn("text-[10px] font-light", isScrolled ? "text-muted-foreground" : "text-white/60")}>&</span> CO
               </span>
             </Link>
           </div>
@@ -85,7 +96,10 @@ export function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="text-[10px] font-bold tracking-[0.2em] uppercase transition-colors hover:text-brand-blue text-muted-foreground/60"
+                  className={cn(
+                    "text-[10px] font-bold tracking-[0.2em] uppercase transition-colors hover:text-brand-blue",
+                    isScrolled ? "text-muted-foreground/60" : "text-white/60 hover:text-white"
+                  )}
                 >
                   {link.name}
                 </Link>

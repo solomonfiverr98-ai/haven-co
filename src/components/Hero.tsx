@@ -53,15 +53,15 @@ export function Hero() {
       <div className="relative z-20 text-center max-w-5xl hero-text space-y-10 px-4 mt-20">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-light dark:glass-dark border border-white/20">
           <span className="w-2 h-2 rounded-full bg-brand-blue animate-pulse" />
-          <span className="text-foreground text-[10px] font-bold uppercase tracking-[0.25em]">Bespoke Real Estate Collective</span>
+          <span className="text-white text-[10px] font-bold uppercase tracking-[0.25em]">Bespoke Real Estate Collective</span>
         </div>
         
-        <h1 className="text-foreground text-7xl md:text-[115px] leading-[0.82] tracking-tighter font-heading font-medium drop-shadow-sm">
+        <h1 className="text-white text-7xl md:text-[115px] leading-[0.82] tracking-tighter font-heading font-medium drop-shadow-sm">
           More <span className="italic font-light text-brand-blue">Comfortable.</span> <br /> 
           More <span className="italic font-light text-brand-blue">Classy.</span>
         </h1>
         
-        <p className="text-foreground/80 dark:text-foreground/60 text-lg md:text-2xl max-w-2xl mx-auto font-body leading-relaxed md:pt-4">
+        <p className="text-white/80 text-lg md:text-2xl max-w-2xl mx-auto font-body leading-relaxed md:pt-4">
           Discover a curation of the world&apos;s most exceptional architectural 
           masterpieces, tailored specifically for the refined few.
         </p>
@@ -74,7 +74,7 @@ export function Hero() {
           </Button>
           <a 
             href="#valuation"
-            className="group flex items-center gap-2 text-foreground/70 hover:text-foreground text-xs font-bold tracking-[0.2em] uppercase transition-colors"
+            className="group flex items-center gap-2 text-white/70 hover:text-white text-xs font-bold tracking-[0.2em] uppercase transition-colors"
           >
             Digital Valuation
             <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-2" />
