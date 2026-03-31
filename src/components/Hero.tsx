@@ -31,15 +31,22 @@ export function Hero() {
     >
       {/* High-Impact Background Image */}
       <div className="absolute inset-0 z-0">
-        <Image 
-          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=80" 
-          alt="Luxury Architectural Residence" 
-          fill 
-          className="object-cover brightness-[0.8] dark:brightness-[0.35] transition-all duration-1000"
+        <Image
+          src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80&w=2000"
+          alt="Luxury House"
+          fill
           priority
+          className="object-cover transition-all duration-700 brightness-[0.55] dark:brightness-[0.35] scale-105"
+          onLoadingComplete={(img) => {
+            gsap.to(img, {
+              scale: 1,
+              duration: 2.5,
+              ease: "power2.out",
+            });
+          }}
         />
-        {/* Dynamic Theme Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/20 to-background/90" />
+        {/* Fixed dark gradient overlay to prevent washout in light mode */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/70 pointer-events-none" />
       </div>
 
       {/* Centered Hero Content */}

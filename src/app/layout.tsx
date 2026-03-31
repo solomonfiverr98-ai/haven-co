@@ -64,7 +64,7 @@ export default function RootLayout({
       <body className={`${inter.variable} antialiased font-sans transition-colors duration-300`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="light" // Default to light mode per user request
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
