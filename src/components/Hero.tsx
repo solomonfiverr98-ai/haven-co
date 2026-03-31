@@ -94,29 +94,28 @@ export function Hero() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Entrance Animations
       const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
       
-      tl.from(".hero-content > *", {
+      tl.from(".hero-text > *", {
         y: 40,
         opacity: 0,
         duration: 1.2,
-        stagger: 0.15,
+        stagger: 0.2,
       })
       .from(villaRef.current, {
-        scale: 0.9,
+        y: 60,
         opacity: 0,
-        duration: 1.8,
+        scale: 0.98,
+        duration: 1.6,
       }, "-=0.8")
       .from([card1Ref.current, card2Ref.current, card3Ref.current, card4Ref.current], {
         opacity: 0,
-        scale: 0.8,
-        y: 30,
+        scale: 0.9,
+        y: 20,
         duration: 1,
         stagger: 0.1,
-      }, "-=1.2");
+      }, "-=1");
 
-      // Continuous Floating Effect
       const float = (targets: any, duration: number, y: number) => {
         gsap.to(targets, {
           y: `+=${y}`,
@@ -127,11 +126,10 @@ export function Hero() {
         });
       };
 
-      float(card1Ref.current, 3, 15);
-      float(card2Ref.current, 4, -20);
-      float(card3Ref.current, 3.5, 12);
-      float(card4Ref.current, 4.5, -18);
-      float(villaRef.current, 6, 8);
+      if (card1Ref.current) float(card1Ref.current, 3, 10);
+      if (card2Ref.current) float(card2Ref.current, 4, -12);
+      if (card3Ref.current) float(card3Ref.current, 3.5, 8);
+      if (card4Ref.current) float(card4Ref.current, 4.5, -10);
     }, containerRef);
 
     return () => ctx.revert();
@@ -140,95 +138,84 @@ export function Hero() {
   return (
     <section 
       ref={containerRef}
-      className="relative min-h-screen w-full overflow-hidden flex flex-col items-center pt-32 pb-24 px-6"
+      className="relative min-h-screen w-full overflow-hidden flex flex-col items-center pt-40 pb-24 px-6 bg-background"
     >
-      {/* High-Impact Background Image */}
-      <div className="absolute inset-0 z-0">
-        <Image 
-          src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1600&q=80" 
-          alt="Luxury Architecture Background" 
-          fill 
-          className="object-cover brightness-[0.9] dark:brightness-[0.4] transition-all duration-1000"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/40 to-background z-1" />
+      {/* Subtle Background Elements */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-brand-blue/5 blur-[120px] rounded-full" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-brand-blue/5 blur-[120px] rounded-full" />
       </div>
 
-      {/* Dynamic Background Elements */}
-      <div className="absolute inset-0 pointer-events-none opacity-40 dark:opacity-60 z-2">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-brand-blue/[0.08] rounded-full" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1100px] h-[1100px] border border-brand-blue/[0.04] rounded-full" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1400px] h-[1400px] border border-brand-blue/[0.02] rounded-full" />
-        
-        {/* Glow effect */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-blue/5 blur-[120px] rounded-full" />
-      </div>
-
-      {/* Header Content */}
-      <div className="relative z-20 text-center max-w-4xl hero-content space-y-8 mb-12">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-light dark:glass-dark border-border/50">
-          <span className="w-2 h-2 rounded-full bg-brand-blue animate-pulse" />
-          <span className="text-brand-blue text-[10px] font-bold uppercase tracking-[0.2em]">The Future of Luxury Real Estate</span>
+      {/* Centered Hero Content */}
+      <div className="relative z-20 text-center max-w-5xl hero-text space-y-8 mb-16 px-4">
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-blue/5 border border-brand-blue/10">
+          <span className="text-brand-blue text-[9px] font-bold uppercase tracking-[0.25em]">Welcome to Haven & Co Collective</span>
         </div>
         
-        <h1 className="text-foreground text-6xl md:text-[90px] leading-[0.9] tracking-tighter font-heading font-medium">
-          Discover Your <span className="italic font-light text-brand-blue">Bespoke</span> <br /> Haven Today.
+        <h1 className="text-foreground text-6xl md:text-[100px] leading-[0.85] tracking-tighter font-heading font-medium">
+          More <span className="italic font-light text-brand-blue">Comfortable.</span> <br /> 
+          More <span className="italic font-light text-brand-blue">Classy.</span>
         </h1>
         
-        <p className="text-muted-foreground text-lg max-w-xl mx-auto font-body leading-relaxed">
-          Access the world&apos;s most exclusive architectural masterpieces. 
-          Bespoke property search tailored to your refined lifestyle.
+        <p className="text-muted-foreground text-base md:text-xl max-w-2xl mx-auto font-body leading-relaxed md:pt-4">
+          The ultimate destination for bespoke architectural masterpieces. 
+          Curated listings for those who demand excellence in every square foot.
         </p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-4">
-          <Button asChild className="bg-brand-blue hover:bg-brand-blue/90 text-white rounded-full px-10 py-7 text-sm font-bold tracking-widest uppercase transition-all duration-500 hover:scale-105 shadow-[0_20px_40px_-10px_rgba(102,141,173,0.3)] cursor-pointer">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-8 pt-8">
+          <Button asChild className="bg-foreground text-background hover:bg-foreground/90 rounded-full px-12 py-8 text-xs font-bold tracking-widest uppercase transition-all duration-500 hover:scale-105 shadow-xl">
             <a href="#properties">
               Explore Collection <ArrowRight className="ml-2 w-4 h-4" />
             </a>
           </Button>
           <a 
             href="#valuation"
-            className="text-muted-foreground hover:text-foreground text-xs font-bold tracking-widest uppercase transition-colors"
+            className="group flex items-center gap-2 text-muted-foreground hover:text-foreground text-[10px] font-bold tracking-widest uppercase transition-colors"
           >
-            View Market Intelligence
+            Request Private Consultation
+            <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
           </a>
         </div>
       </div>
 
-      {/* Central Interactive Composition */}
-      <div className="relative w-full max-w-6xl aspect-[16/9] mt-8 flex items-center justify-center">
-        {/* The Villa Model */}
-        <div ref={villaRef} className="relative w-[80%] aspect-square max-w-[800px] z-10 transition-all duration-1000">
+      {/* Large Centered Frame Image */}
+      <div className="relative w-full max-w-6xl z-10 px-4 md:px-0">
+        <div 
+          ref={villaRef} 
+          className="relative aspect-[21/9] w-full rounded-[2rem] md:rounded-[4rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] dark:shadow-[0_50px_100px_-20px_rgba(0,0,0,0.6)] group"
+        >
           <Image 
-            src="/hero-villa.png" 
-            alt="Luxury Villa Architectural Model" 
+            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=90" 
+            alt="Luxury Modern Architecture" 
             fill 
-            className="object-contain drop-shadow-[0_40px_80px_rgba(0,0,0,0.2)] dark:drop-shadow-[0_40px_80px_rgba(0,0,0,0.8)] filter brightness-110" 
+            className="object-cover transition-transform duration-1000 group-hover:scale-105" 
             priority
           />
+          {/* Subtle Overlay to ensure readability of overlapping cards if any */}
+          <div className="absolute inset-0 bg-black/5 dark:bg-transparent transition-colors duration-500 group-hover:bg-transparent" />
         </div>
 
-        {/* Floating Cards - Desktop Positioning */}
-        <div ref={card1Ref} className="absolute top-[10%] left-[5%] z-20 hidden lg:block">
+        {/* Floating Cards - Repositioned around the frame */}
+        <div ref={card1Ref} className="absolute -top-12 -left-8 z-20 hidden xl:block">
           <StatCard />
         </div>
         
-        <div ref={card2Ref} className="absolute top-[15%] right-[5%] z-20 hidden lg:block">
+        <div ref={card2Ref} className="absolute -top-16 -right-12 z-20 hidden xl:block">
           <MarketCard />
         </div>
         
-        <div ref={card3Ref} className="absolute bottom-[20%] left-[8%] z-20 hidden lg:block">
+        <div ref={card3Ref} className="absolute -bottom-10 -left-6 z-20 hidden xl:block">
           <TeamCard />
         </div>
         
-        <div ref={card4Ref} className="absolute bottom-[10%] right-[8%] z-20 hidden lg:block">
+        <div ref={card4Ref} className="absolute -bottom-14 -right-10 z-20 hidden xl:block">
           <ListingCard />
         </div>
 
-        {/* Mobile View - Single Stat Row */}
-        <div className="absolute -bottom-10 left-0 right-0 lg:hidden flex justify-center px-4 overflow-x-auto gap-4 py-8">
+        {/* Mobile View Stats Row */}
+        <div className="mt-12 xl:hidden flex justify-center gap-4 overflow-x-auto pb-4 scrollbar-hide">
           <StatCard className="scale-90 flex-shrink-0" />
-          <TeamCard className="scale-90 flex-shrink-0" />
+          <ListingCard className="scale-90 flex-shrink-0" />
         </div>
       </div>
     </section>
