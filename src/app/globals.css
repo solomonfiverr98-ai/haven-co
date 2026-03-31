@@ -116,8 +116,16 @@
   .text-luxury {
     @apply font-heading tracking-tight;
   }
+  .bg-grid-slate {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
   .glass-dark {
-    @apply bg-white/5 backdrop-blur-md border border-white/10;
+    @apply bg-black/40 backdrop-blur-xl border border-white/10;
+  }
+  .glass-light {
+    @apply bg-white/10 backdrop-blur-xl border border-white/20;
   }
   .gold-gradient {
     @apply bg-gradient-to-tr from-[#B8965A] to-[#D4B982];

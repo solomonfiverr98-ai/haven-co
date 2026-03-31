@@ -4,194 +4,214 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { ArrowRight, TrendingUp, Users, Home, Award } from "lucide-react";
 
-/* ─── Custom SVG Icons ─── */
-const SearchIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" />
-  </svg>
+/* ─── Floating Card Components ─── */
+
+const StatCard = ({ className }: { className?: string }) => (
+  <div className={`glass-dark p-6 rounded-[2rem] w-48 shadow-2xl flex flex-col gap-2 ${className}`}>
+    <div className="w-10 h-10 rounded-full bg-[#B8965A]/20 flex items-center justify-center text-[#B8965A]">
+      <TrendingUp size={20} />
+    </div>
+    <div>
+      <div className="text-white text-2xl font-heading font-bold">$2.4B+</div>
+      <div className="text-white/40 text-[10px] uppercase tracking-widest font-bold">Sales Volume</div>
+    </div>
+    <div className="mt-2 h-1 w-full bg-white/5 rounded-full overflow-hidden">
+      <div className="h-full bg-[#B8965A] w-[85%]" />
+    </div>
+  </div>
 );
 
-const MapPinIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /><circle cx="12" cy="10" r="3" />
-  </svg>
+const MarketCard = ({ className }: { className?: string }) => (
+  <div className={`glass-light p-6 rounded-[2rem] w-56 shadow-2xl ${className}`}>
+    <div className="flex justify-between items-start mb-4">
+      <div>
+        <div className="text-white text-xl font-heading font-bold">12.5%</div>
+        <div className="text-white/40 text-[10px] uppercase tracking-widest font-bold">Annual Appreciation</div>
+      </div>
+      <div className="p-2 rounded-xl bg-emerald-500/10 text-emerald-500">
+        <TrendingUp size={16} />
+      </div>
+    </div>
+    <div className="flex items-end gap-1 h-12">
+      {[40, 70, 45, 90, 65, 80, 100].map((h, i) => (
+        <div 
+          key={i} 
+          className="flex-1 bg-[#B8965A]/30 rounded-t-sm transition-all duration-500 hover:bg-[#B8965A]" 
+          style={{ height: `${h}%` }} 
+        />
+      ))}
+    </div>
+  </div>
 );
 
-const HomeIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" /><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-  </svg>
+const TeamCard = ({ className }: { className?: string }) => (
+  <div className={`glass-dark p-4 rounded-[2rem] shadow-2xl flex items-center gap-4 ${className}`}>
+    <div className="flex -space-x-3">
+      {["https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100", 
+        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100", 
+        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100"].map((src, i) => (
+        <div key={i} className="w-10 h-10 rounded-full border-2 border-[#111111] overflow-hidden relative">
+          <Image src={src} alt="Agent" fill className="object-cover grayscale" />
+        </div>
+      ))}
+    </div>
+    <div>
+      <div className="text-white text-sm font-bold">Elite Partners</div>
+      <div className="text-[#B8965A] text-[10px] uppercase tracking-widest">The Collective</div>
+    </div>
+  </div>
 );
 
-const DollarSignIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <line x1="12" x2="12" y1="2" y2="22" /><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-  </svg>
+const ListingCard = ({ className }: { className?: string }) => (
+  <div className={`glass-light p-3 rounded-[1.5rem] w-64 shadow-2xl flex gap-3 items-center ${className}`}>
+    <div className="w-16 h-16 rounded-xl overflow-hidden relative flex-shrink-0">
+      <Image 
+        src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=200" 
+        alt="Listing" 
+        fill 
+        className="object-cover" 
+      />
+    </div>
+    <div className="flex-1 min-w-0">
+      <div className="text-white text-sm font-bold truncate">Oakwood Estate</div>
+      <div className="text-[#B8965A] text-xs font-medium">$12,450,000</div>
+    </div>
+    <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-white/40">
+      <ArrowRight size={14} />
+    </div>
+  </div>
 );
 
 export function Hero() {
-  const headingRef = useRef<HTMLDivElement>(null);
-  const searchRef = useRef<HTMLDivElement>(null);
-  const statsRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const villaRef = useRef<HTMLDivElement>(null);
+  const card1Ref = useRef<HTMLDivElement>(null);
+  const card2Ref = useRef<HTMLDivElement>(null);
+  const card3Ref = useRef<HTMLDivElement>(null);
+  const card4Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(".hero-line", {
-        y: 100,
+      // Entrance Animations
+      const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
+      
+      tl.from(".hero-content > *", {
+        y: 40,
         opacity: 0,
         duration: 1.2,
-        stagger: 0.2,
-        ease: "power4.out",
-      });
-
-      gsap.from(searchRef.current, {
-        y: 50,
+        stagger: 0.15,
+      })
+      .from(villaRef.current, {
+        scale: 0.9,
         opacity: 0,
+        duration: 1.8,
+      }, "-=0.8")
+      .from([card1Ref.current, card2Ref.current, card3Ref.current, card4Ref.current], {
+        opacity: 0,
+        scale: 0.8,
+        y: 30,
         duration: 1,
-        delay: 0.8,
-        ease: "power3.out",
-      });
-
-      gsap.from(".hero-stat", {
-        opacity: 0,
-        y: 20,
-        duration: 0.8,
-        delay: 1.2,
         stagger: 0.1,
-        ease: "power2.out",
-      });
-    });
+      }, "-=1.2");
+
+      // Continuous Floating Effect
+      const float = (targets: any, duration: number, y: number) => {
+        gsap.to(targets, {
+          y: `+=${y}`,
+          duration: duration,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+        });
+      };
+
+      float(card1Ref.current, 3, 15);
+      float(card2Ref.current, 4, -20);
+      float(card3Ref.current, 3.5, 12);
+      float(card4Ref.current, 4.5, -18);
+      float(villaRef.current, 6, 8);
+    }, containerRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <section className="relative min-h-screen w-full bg-[#0A0A0A] overflow-hidden flex flex-col items-center justify-center pt-24 pb-16 px-6">
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1600"
-          alt="Luxury Architecture"
-          fill
-          className="object-cover opacity-50 contrast-125"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A]/80 via-transparent to-[#0A0A0A]" />
+    <section 
+      ref={containerRef}
+      className="relative min-h-screen w-full bg-[#0A0A0A] bg-grid-slate overflow-hidden flex flex-col items-center pt-32 pb-24 px-6"
+    >
+      {/* Dynamic Background Elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-white/[0.03] rounded-full" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1100px] h-[1100px] border border-white/[0.02] rounded-full" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1400px] h-[1400px] border border-white/[0.01] rounded-full" />
+        
+        {/* Glow effect */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#B8965A]/5 blur-[120px] rounded-full" />
       </div>
 
-      {/* Content Stack */}
-      <div className="relative z-10 max-w-5xl w-full text-center flex flex-col items-center">
-        <div className="space-y-6 mb-12">
-          <span className="inline-block text-[#B8965A] text-[12px] uppercase tracking-[0.4em] font-semibold hero-line">
-            ✦ THE APEX OF LUXURY LIVING
-          </span>
+      {/* Header Content */}
+      <div className="relative z-20 text-center max-w-4xl hero-content space-y-8 mb-12">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-dark border-white/5">
+          <span className="w-2 h-2 rounded-full bg-[#B8965A] animate-pulse" />
+          <span className="text-[#B8965A] text-[10px] font-bold uppercase tracking-[0.2em]">The Future of Luxury Real Estate</span>
+        </div>
+        
+        <h1 className="text-white text-6xl md:text-[90px] leading-[0.9] tracking-tighter font-heading">
+          Discover Your <span className="italic font-light text-[#B8965A]">Bespoke</span> <br /> Haven Today.
+        </h1>
+        
+        <p className="text-white/50 text-lg max-w-xl mx-auto font-body leading-relaxed">
+          Access the world&apos;s most exclusive architectural masterpieces. 
+          Bespoke property search tailored to your refined lifestyle.
+        </p>
 
-          <h1 ref={headingRef} className="text-white text-6xl md:text-[110px] leading-[0.9] tracking-tighter font-heading">
-            <span className="block hero-line">Redefining</span>
-            <span className="block italic text-[#B8965A] hero-line translate-y-2 md:translate-y-4">Luxury Real Estate.</span>
-          </h1>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-4">
+          <Button className="bg-[#B8965A] hover:bg-[#C9A86C] text-white rounded-full px-10 py-7 text-sm font-bold tracking-widest uppercase transition-all duration-500 hover:scale-105 shadow-[0_20px_40px_-10px_rgba(184,150,90,0.3)]">
+            Explore Collection <ArrowRight className="ml-2 w-4 h-4" />
+          </Button>
+          <button className="text-white/60 hover:text-white text-xs font-bold tracking-widest uppercase transition-colors">
+            View Market Intelligence
+          </button>
+        </div>
+      </div>
 
-          <p className="text-white/70 text-lg md:text-xl max-w-2xl mx-auto mt-8 mb-12 font-body hero-line">
-            Curated collections of the world&apos;s most exceptional properties. Where vision meets architectural excellence.
-          </p>
+      {/* Central Interactive Composition */}
+      <div className="relative w-full max-w-6xl aspect-[16/9] mt-8 flex items-center justify-center">
+        {/* The Villa Model */}
+        <div ref={villaRef} className="relative w-[80%] aspect-square max-w-[800px] z-10 transition-all duration-1000">
+          <Image 
+            src="/hero-villa.png" 
+            alt="Luxury Villa Architectural Model" 
+            fill 
+            className="object-contain drop-shadow-[0_40px_80px_rgba(0,0,0,0.8)] filter brightness-110" 
+            priority
+          />
         </div>
 
-        {/* Floating Search/Valuation Card */}
-        <div
-          ref={searchRef}
-          className="bg-white border border-[#E5E0D8] p-6 md:p-8 rounded-[32px] w-full max-w-5xl shadow-[0_32px_64px_-12px_rgba(0,0,0,0.5)] transform -translate-y-4"
-        >
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 items-center">
-            {/* Location */}
-            <div className="flex items-start gap-4 px-4 py-2 border-b md:border-b-0 md:border-r border-[#E5E0D8]">
-              <span className="text-[#B8965A] mt-1"><MapPinIcon /></span>
-              <div className="flex flex-col text-left flex-1">
-                <span className="text-slate-400 text-[11px] uppercase tracking-widest font-bold">Location</span>
-                <Select>
-                  <SelectTrigger className="bg-transparent border-0 p-0 text-slate-900 h-auto focus:ring-0 font-semibold text-base mt-0.5">
-                    <SelectValue placeholder="Beverly Hills, CA" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="beverly-hills">Beverly Hills, CA</SelectItem>
-                    <SelectItem value="miami">Miami, FL</SelectItem>
-                    <SelectItem value="ny">Manhattan, NY</SelectItem>
-                    <SelectItem value="london">Mayfair, London</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
-
-            {/* Type */}
-            <div className="flex items-start gap-4 px-4 py-2 border-b md:border-b-0 md:border-r border-[#E5E0D8]">
-              <span className="text-[#B8965A] mt-1"><HomeIcon /></span>
-              <div className="flex flex-col text-left flex-1">
-                <span className="text-slate-400 text-[11px] uppercase tracking-widest font-bold">Property Type</span>
-                <Select>
-                  <SelectTrigger className="bg-transparent border-0 p-0 text-slate-900 h-auto focus:ring-0 font-semibold text-base mt-0.5">
-                    <SelectValue placeholder="Estate / Villa" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="estate">Luxury Estate</SelectItem>
-                    <SelectItem value="penthouse">Penthouse</SelectItem>
-                    <SelectItem value="waterfront">Waterfront Villa</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
-
-            {/* Price Range */}
-            <div className="flex items-start gap-4 px-4 py-2">
-              <span className="text-[#B8965A] mt-1"><DollarSignIcon /></span>
-              <div className="flex flex-col text-left flex-1">
-                <span className="text-slate-400 text-[11px] uppercase tracking-widest font-bold">Price Range</span>
-                <Select>
-                  <SelectTrigger className="bg-transparent border-0 p-0 text-slate-900 h-auto focus:ring-0 font-semibold text-base mt-0.5">
-                    <SelectValue placeholder="$5M - $25M+" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="5m">$5M - $10M</SelectItem>
-                    <SelectItem value="10m">$10M - $25M</SelectItem>
-                    <SelectItem value="25m">$25M+</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
-
-            {/* CTA Button */}
-            <Button className="bg-[#B8965A] hover:bg-[#C9A86C] text-white rounded-2xl py-8 px-8 font-bold text-lg shadow-xl transition-all duration-500 hover:scale-[1.02]">
-              Search Estates <span className="ml-3"><SearchIcon /></span>
-            </Button>
-          </div>
+        {/* Floating Cards - Desktop Positioning */}
+        <div ref={card1Ref} className="absolute top-[10%] left-[5%] z-20 hidden lg:block">
+          <StatCard />
+        </div>
+        
+        <div ref={card2Ref} className="absolute top-[15%] right-[5%] z-20 hidden lg:block">
+          <MarketCard />
+        </div>
+        
+        <div ref={card3Ref} className="absolute bottom-[20%] left-[8%] z-20 hidden lg:block">
+          <TeamCard />
+        </div>
+        
+        <div ref={card4Ref} className="absolute bottom-[10%] right-[8%] z-20 hidden lg:block">
+          <ListingCard />
         </div>
 
-        {/* Stats Grid */}
-        <div
-          ref={statsRef}
-          className="flex flex-wrap justify-center gap-x-12 gap-y-6 mt-16 pb-8"
-        >
-          <div className="flex flex-col items-center hero-stat">
-            <span className="text-white text-3xl font-heading font-medium tracking-tight">500+</span>
-            <span className="text-[#B8965A] text-[10px] uppercase tracking-[0.3em] font-bold mt-1">Properties Sold</span>
-          </div>
-          <div className="w-px h-10 bg-white/20 hidden md:block" />
-          <div className="flex flex-col items-center hero-stat">
-            <span className="text-white text-3xl font-heading font-medium tracking-tight">98%</span>
-            <span className="text-[#B8965A] text-[10px] uppercase tracking-[0.3em] font-bold mt-1">Satisfied Clients</span>
-          </div>
-          <div className="w-px h-10 bg-white/20 hidden md:block" />
-          <div className="flex flex-col items-center hero-stat">
-            <span className="text-white text-3xl font-heading font-medium tracking-tight">$2.4B+</span>
-            <span className="text-[#B8965A] text-[10px] uppercase tracking-[0.3em] font-bold mt-1">Sales Volume</span>
-          </div>
+        {/* Mobile View - Single Stat Row */}
+        <div className="absolute -bottom-10 left-0 right-0 lg:hidden flex justify-center px-4 overflow-x-auto gap-4 py-8">
+          <StatCard className="scale-90 flex-shrink-0" />
+          <TeamCard className="scale-90 flex-shrink-0" />
         </div>
       </div>
     </section>
