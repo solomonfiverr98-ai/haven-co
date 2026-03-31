@@ -12,6 +12,7 @@
   --font-body: var(--font-inter);
   
   --color-brand-blue: #668DAD;
+  --color-brand: #668DAD;
   --color-brand-accent: #A9BDCC;
   --color-hero-bg: var(--background);
   --color-hero-surface: var(--card);

@@ -140,10 +140,22 @@ export function Hero() {
   return (
     <section 
       ref={containerRef}
-      className="relative min-h-screen w-full bg-background bg-grid-slate overflow-hidden flex flex-col items-center pt-32 pb-24 px-6"
+      className="relative min-h-screen w-full overflow-hidden flex flex-col items-center pt-32 pb-24 px-6"
     >
+      {/* High-Impact Background Image */}
+      <div className="absolute inset-0 z-0">
+        <Image 
+          src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1600&q=80" 
+          alt="Luxury Architecture Background" 
+          fill 
+          className="object-cover brightness-[0.9] dark:brightness-[0.4] transition-all duration-1000"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/40 to-background z-1" />
+      </div>
+
       {/* Dynamic Background Elements */}
-      <div className="absolute inset-0 pointer-events-none opacity-40 dark:opacity-100">
+      <div className="absolute inset-0 pointer-events-none opacity-40 dark:opacity-60 z-2">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-brand-blue/[0.08] rounded-full" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1100px] h-[1100px] border border-brand-blue/[0.04] rounded-full" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1400px] h-[1400px] border border-brand-blue/[0.02] rounded-full" />
@@ -169,12 +181,17 @@ export function Hero() {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-4">
-          <Button className="bg-brand-blue hover:bg-brand-blue/90 text-white rounded-full px-10 py-7 text-sm font-bold tracking-widest uppercase transition-all duration-500 hover:scale-105 shadow-[0_20px_40px_-10px_rgba(102,141,173,0.3)]">
-            Explore Collection <ArrowRight className="ml-2 w-4 h-4" />
+          <Button asChild className="bg-brand-blue hover:bg-brand-blue/90 text-white rounded-full px-10 py-7 text-sm font-bold tracking-widest uppercase transition-all duration-500 hover:scale-105 shadow-[0_20px_40px_-10px_rgba(102,141,173,0.3)] cursor-pointer">
+            <a href="#properties">
+              Explore Collection <ArrowRight className="ml-2 w-4 h-4" />
+            </a>
           </Button>
-          <button className="text-muted-foreground hover:text-foreground text-xs font-bold tracking-widest uppercase transition-colors">
+          <a 
+            href="#valuation"
+            className="text-muted-foreground hover:text-foreground text-xs font-bold tracking-widest uppercase transition-colors"
+          >
             View Market Intelligence
-          </button>
+          </a>
         </div>
       </div>
 

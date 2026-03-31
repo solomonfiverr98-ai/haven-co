@@ -89,7 +89,7 @@ export function Footer() {
                   concierge@havenandco.com
                 </a>
               </li>
-              <li className="hover:text-foreground transition-colors">+1 (212) 888 0000</li>
+              <li className="hover:text-foreground transition-colors"><a href="tel:+12125550123" className="hover:text-brand">+1 (212) 555-0123</a></li>
               <li>700 Fifth Avenue, 18th Floor,<br />New York, NY 10019</li>
             </ul>
           </div>

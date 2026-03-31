@@ -107,6 +107,8 @@ const HeartIcon = () => (
 );
 
 function PropertyCard({ property }: { property: Property }) {
+  const [isFavorite, setIsFavorite] = useState(false);
+
   return (
     <div className="group relative bg-card rounded-[32px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-700 border border-foreground/5 hover:border-brand/30">
       {/* Image Container */}
@@ -129,7 +131,13 @@ function PropertyCard({ property }: { property: Property }) {
           )}
         </div>
         {/* Wishlist Button */}
-        <button className="absolute top-6 right-6 bg-background/90 backdrop-blur-sm p-3 rounded-full text-foreground shadow-lg hover:bg-brand hover:text-white transition-all duration-300">
+        <button 
+          onClick={() => setIsFavorite(!isFavorite)}
+          className={cn(
+            "absolute top-6 right-6 backdrop-blur-sm p-3 rounded-full shadow-lg transition-all duration-300",
+            isFavorite ? "bg-red-500 text-white" : "bg-background/90 text-foreground hover:bg-brand hover:text-white"
+          )}
+        >
           <HeartIcon />
         </button>
       </div>
@@ -166,7 +174,7 @@ function PropertyCard({ property }: { property: Property }) {
 
         <a 
           href="#valuation" 
-          className="mt-2 flex items-center justify-center w-full py-4 rounded-2xl bg-muted text-[13px] font-bold text-foreground hover:bg-brand hover:text-white transition-all duration-300 group/link"
+          className="mt-2 flex items-center justify-center w-full py-4 rounded-2xl bg-brand text-[13px] font-bold text-white hover:bg-brand/90 transition-all duration-300 group/link shadow-md"
         >
           Inquire Now
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-2 transition-transform duration-300 group-hover/link:translate-x-1"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
@@ -228,10 +236,10 @@ export function FeaturedProperties() {
 
         <div className="flex justify-center mt-24">
           <a 
-            href="#valuation" 
+            href="#properties" 
             className="group flex items-center gap-4 px-14 py-5 rounded-full bg-foreground text-background text-[13px] font-bold tracking-widest uppercase hover:bg-brand hover:text-white transition-all duration-500"
           >
-            View Full Portfolio
+            Refresh Portfolio
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
           </a>
         </div>

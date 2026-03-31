@@ -140,13 +140,16 @@ export function Services() {
                     <p className="text-muted-foreground font-body text-lg leading-relaxed max-w-xl">
                       {service.description}
                     </p>
-                    <div className="mt-8 overflow-hidden">
-                      <button className="flex items-center gap-2 text-foreground/40 hover:text-brand text-sm uppercase tracking-widest font-medium transition-all duration-300">
+                    <div className="mt-8">
+                      <a 
+                        href="#valuation"
+                        className="inline-flex items-center gap-2 text-foreground/40 hover:text-brand text-sm uppercase tracking-widest font-medium transition-all duration-300"
+                      >
                         Explore Service
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="translate-y-[-1px]">
                           <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
                         </svg>
-                      </button>
+                      </a>
                     </div>
                   </div>
                 </div>
