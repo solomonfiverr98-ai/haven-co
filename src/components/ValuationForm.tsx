@@ -243,9 +243,9 @@ export function ValuationForm() {
               <Button
                 type="submit"
                 disabled={isPending}
-                className="w-full bg-brand hover:bg-brand/90 text-white rounded-full py-8 text-xl font-heading shadow-lg transition-all disabled:opacity-50"
+                className="w-full bg-brand-blue hover:bg-brand-blue/90 text-white rounded-2xl py-8 text-lg font-bold tracking-[0.2em] uppercase shadow-xl hover:shadow-brand-blue/20 transition-all duration-500 hover:scale-[1.02] active:scale-95 disabled:opacity-50"
               >
-                {isPending ? "Sending..." : "Request Free Valuation →"}
+                {isPending ? "Processing..." : "Request Valuation →"}
               </Button>
 
               <p className="text-center text-[12px] font-body text-muted-foreground mt-4">

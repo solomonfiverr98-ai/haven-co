@@ -45,15 +45,14 @@ export function Navbar() {
               variant="ghost" 
               size="sm" 
               className={cn(
-                "lg:hidden rounded-full px-4 gap-2 transition-colors z-[120]",
+                "lg:hidden rounded-full px-3 transition-colors z-[120]",
                 isScrolled || mobileMenuOpen
                   ? "hover:bg-black/5 dark:hover:bg-white/5 text-muted-foreground hover:text-foreground" 
                   : "hover:bg-white/10 text-white/80 hover:text-white"
               )}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
-              {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
-              <span className="text-xs font-bold tracking-widest uppercase">Menu</span>
+              <Menu size={22} strokeWidth={1.5} />
             </Button>
 
             {/* Desktop Links (Next to Menu position) */}
@@ -125,6 +124,17 @@ export function Navbar() {
             exit={{ opacity: 0, y: -20 }}
             className="fixed inset-0 z-[110] bg-background lg:hidden pt-32 pb-10 px-8 flex flex-col justify-between"
           >
+            <div className="absolute top-8 right-8">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="w-12 h-12 rounded-full bg-foreground/5 hover:bg-foreground/10 text-foreground"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <X size={24} strokeWidth={1.5} />
+              </Button>
+            </div>
+
             <div className="flex flex-col gap-8">
               {navLinks.map((link, i) => (
                 <motion.div
@@ -136,7 +146,7 @@ export function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="text-4xl font-heading font-medium tracking-tight text-foreground hover:text-brand-blue transition-colors"
+                    className="text-5xl font-heading font-medium tracking-tight text-foreground hover:text-brand-blue transition-colors"
                   >
                     {link.name}
                   </Link>

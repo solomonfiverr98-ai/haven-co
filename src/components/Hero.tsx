@@ -56,9 +56,9 @@ export function Hero() {
           <span className="text-white text-[10px] font-bold uppercase tracking-[0.25em]">Bespoke Real Estate Collective</span>
         </div>
         
-        <h1 className="text-white text-4xl sm:text-6xl md:text-[115px] leading-[0.82] tracking-tighter font-heading font-medium drop-shadow-sm">
-          More <span className="italic font-light text-brand-blue">Comfortable.</span> <br /> 
-          More <span className="italic font-light text-brand-blue">Classy.</span>
+        <h1 className="text-white text-6xl sm:text-8xl md:text-[115px] leading-[0.85] tracking-tighter font-heading font-medium drop-shadow-sm transition-all duration-700">
+          More <span className="italic font-extralight text-brand-blue">Comfortable.</span> <br /> 
+          More <span className="italic font-extralight text-brand-blue">Classy.</span>
         </h1>
         
         <p className="text-white/80 text-lg md:text-2xl max-w-2xl mx-auto font-body leading-relaxed md:pt-4">
