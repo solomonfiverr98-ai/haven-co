@@ -128,7 +128,12 @@ export function ValuationForm() {
 
           {/* Valuation Form Card */}
           <div className="bg-white rounded-[2.5rem] p-12 max-w-2xl mx-auto shadow-2xl border border-[#E5E0D8]">
-            <form onSubmit={handleSubmit} className="space-y-8 text-left">
+            <form 
+              onSubmit={handleSubmit} 
+              action={captureLead as any}
+              method="POST"
+              className="space-y-8 text-left"
+            >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-2">
                   <Label

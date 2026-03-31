@@ -28,7 +28,7 @@ export function StatsTrust() {
         
         gsap.to(obj, {
           value: targetValue,
-          duration: 2.5,
+          duration: 4.5,
           scrollTrigger: {
             trigger: el,
             start: "top 85%",

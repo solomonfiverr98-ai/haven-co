@@ -16,9 +16,13 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://haven-co.re"),
   title: "Haven & Co | Premium Luxury Real Estate",
   description:
     "Exceptional properties. Trusted expertise. Haven & Co delivers a bespoke real estate experience for discerning buyers, sellers, and investors.",
+  alternates: {
+    canonical: "/",
+  },
   keywords: [
     "luxury real estate",
     "premium properties",
@@ -34,6 +38,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "Haven & Co",
+    images: [
+      {
+        url: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&q=80&w=1200&h=630",
+        width: 1200,
+        height: 630,
+        alt: "Haven & Co | Premium Luxury Real Estate",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",

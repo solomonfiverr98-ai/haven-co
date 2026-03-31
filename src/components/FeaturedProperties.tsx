@@ -89,7 +89,7 @@ const properties: Property[] = [
   },
   {
     id: 6,
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600",
+    image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800",
     price: "$6,200/mo",
     status: "FOR RENT",
     address: "303 Birch Court",
@@ -168,7 +168,7 @@ function PropertyCard({ property }: { property: Property }) {
           href="#valuation" 
           className="mt-2 flex items-center justify-center w-full py-4 rounded-2xl bg-slate-50 text-[13px] font-bold text-[#0A0A0A] hover:bg-[#B8965A] hover:text-white transition-all duration-300 group/link"
         >
-          View Details
+          Inquire Now
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-2 transition-transform duration-300 group-hover/link:translate-x-1"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
         </a>
       </div>
@@ -231,7 +231,7 @@ export function FeaturedProperties() {
             href="#valuation" 
             className="group flex items-center gap-4 px-14 py-5 rounded-full bg-[#0A0A0A] text-white text-[13px] font-bold tracking-widest uppercase hover:bg-[#B8965A] transition-all duration-500"
           >
-            Explore All Listings
+            View Full Portfolio
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
           </a>
         </div>

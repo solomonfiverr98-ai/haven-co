@@ -33,18 +33,38 @@ export function Footer() {
               Redefining luxury real estate through editorial storytelling, data-driven precision, and an unwavering commitment to discretion.
             </p>
             <div className="flex gap-6">
-              <span className="p-3 bg-white/5 rounded-full hover:bg-gold transition-all text-white border border-white/10 hover:border-gold cursor-pointer">
+              <a 
+                href="https://instagram.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="p-3 bg-white/5 rounded-full hover:bg-gold transition-all text-white border border-white/10 hover:border-gold"
+              >
                 <InstagramIcon />
-              </span>
-              <span className="p-3 bg-white/5 rounded-full hover:bg-gold transition-all text-white border border-white/10 hover:border-gold cursor-pointer">
+              </a>
+              <a 
+                href="https://linkedin.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="p-3 bg-white/5 rounded-full hover:bg-gold transition-all text-white border border-white/10 hover:border-gold"
+              >
                 <LinkedinIcon />
-              </span>
-              <span className="p-3 bg-white/5 rounded-full hover:bg-gold transition-all text-white border border-white/10 hover:border-gold cursor-pointer">
+              </a>
+              <a 
+                href="https://facebook.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="p-3 bg-white/5 rounded-full hover:bg-gold transition-all text-white border border-white/10 hover:border-gold"
+              >
                 <FacebookIcon />
-              </span>
-              <span className="p-3 bg-white/5 rounded-full hover:bg-gold transition-all text-white border border-white/10 hover:border-gold cursor-pointer">
+              </a>
+              <a 
+                href="https://twitter.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="p-3 bg-white/5 rounded-full hover:bg-gold transition-all text-white border border-white/10 hover:border-gold"
+              >
                 <TwitterIcon />
-              </span>
+              </a>
             </div>
           </div>
 
@@ -53,7 +73,7 @@ export function Footer() {
             <ul className="space-y-4 font-body">
               <li><Link href="#properties" className="text-white/50 hover:text-gold transition-colors">Featured Listings</Link></li>
               <li><Link href="#services" className="text-white/50 hover:text-gold transition-colors">Our Services</Link></li>
-              <li><Link href="#about" className="text-white/50 hover:text-gold transition-colors">Meet the Team</Link></li>
+              <li><Link href="#team" className="text-white/50 hover:text-gold transition-colors">Meet the Team</Link></li>
               <li><Link href="#valuation" className="text-white/50 hover:text-gold transition-colors">Property Valuation</Link></li>
             </ul>
           </div>
@@ -63,14 +83,14 @@ export function Footer() {
             <ul className="space-y-4 font-body text-white/50">
               <li>
                 <a 
-                  href="mailto:solomonfiverr98@gmail.com" 
+                  href="mailto:concierge@havenandco.com" 
                   className="hover:text-white transition-colors underline underline-offset-4 decoration-gold/30 hover:decoration-gold"
                 >
-                  solomonfiverr98@gmail.com
+                  concierge@havenandco.com
                 </a>
               </li>
-              <li className="hover:text-white transition-colors">+1 (555) 789 0123</li>
-              <li>99 Luxury Avenue,<br />New York, NY 10001</li>
+              <li className="hover:text-white transition-colors">+1 (212) 888 0000</li>
+              <li>700 Fifth Avenue, 18th Floor,<br />New York, NY 10019</li>
             </ul>
           </div>
         </div>
@@ -86,9 +106,9 @@ export function Footer() {
               © {currentYear} HAVEN & CO REAL ESTATE GROUP. ALL RIGHTS RESERVED.
             </p>
             <div className="flex gap-8 text-[12px] uppercase tracking-[0.2em] font-medium text-white/30">
-              <span className="cursor-default">Privacy Policy</span>
-              <span className="cursor-default">Terms of Service</span>
-              <span className="cursor-default">Cookie Settings</span>
+              <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
+              <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
+              <button className="hover:text-white transition-colors">Cookie Settings</button>
             </div>
           </div>
         </div>
