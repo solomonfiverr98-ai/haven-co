@@ -33,14 +33,14 @@ const agents = [
 
 export function Team() {
   return (
-    <section id="team" className="py-32 px-6 md:px-24 bg-[#0A0A0A]">
+    <section id="team" className="py-32 px-6 md:px-24 bg-background transition-colors duration-500">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20">
-          <span className="inline-block text-[#B8965A] text-[11px] uppercase tracking-[0.4em] font-bold mb-4">
+          <span className="inline-block text-brand text-[11px] uppercase tracking-[0.4em] font-bold mb-4">
             ✦ THE HAVEN COLLECTIVE
           </span>
-          <h2 className="text-white text-5xl md:text-7xl font-heading leading-tight tracking-tighter">
-            Elite Expertise. <span className="italic font-light text-[#B8965A]">Personalized.</span>
+          <h2 className="text-foreground text-5xl md:text-7xl font-heading leading-tight tracking-tighter">
+            Elite Expertise. <span className="italic font-light text-brand">Personalized.</span>
           </h2>
         </div>
 
@@ -48,7 +48,7 @@ export function Team() {
           {agents.map((agent, index) => (
             <div key={index} className="group relative flex flex-col items-center">
               {/* Image with Border Frame */}
-              <div className="relative w-full aspect-[4/5] mb-8 overflow-hidden rounded-[40px] border border-white/5 p-2 transition-all duration-700 hover:border-[#B8965A]/50">
+              <div className="relative w-full aspect-[4/5] mb-8 overflow-hidden rounded-[40px] border border-foreground/5 p-2 transition-all duration-700 hover:border-brand/50">
                 <div className="relative w-full h-full overflow-hidden rounded-[32px]">
                   <Image
                     src={agent.image}
@@ -57,14 +57,14 @@ export function Team() {
                     className="object-cover grayscale hover:grayscale-0 transition-all duration-1000 scale-100 group-hover:scale-110"
                   />
                   {/* Overlay Grad */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-700" />
                   
                   {/* Floating Socials */}
                   <div className="absolute bottom-8 right-8 flex flex-col gap-3 translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                    <button className="bg-white/10 backdrop-blur-md p-3 rounded-full text-white border border-white/10 hover:bg-[#B8965A] transition-colors">
+                    <button className="bg-foreground/10 backdrop-blur-md p-3 rounded-full text-foreground border border-foreground/10 hover:bg-brand hover:text-white transition-colors">
                       <LinkedInIcon />
                     </button>
-                    <button className="bg-white/10 backdrop-blur-md p-3 rounded-full text-white border border-white/10 hover:bg-[#B8965A] transition-colors">
+                    <button className="bg-foreground/10 backdrop-blur-md p-3 rounded-full text-foreground border border-foreground/10 hover:bg-brand hover:text-white transition-colors">
                       <InstagramIcon />
                     </button>
                   </div>
@@ -73,13 +73,13 @@ export function Team() {
 
               {/* Text Info */}
               <div className="text-center">
-                <h3 className="text-white text-2xl font-heading font-medium tracking-tight mb-2">
+                <h3 className="text-foreground text-2xl font-heading font-medium tracking-tight mb-2">
                   {agent.name}
                 </h3>
-                <span className="text-[#B8965A] text-[11px] uppercase tracking-[0.2em] font-bold block mb-4">
+                <span className="text-brand text-[11px] uppercase tracking-[0.2em] font-bold block mb-4">
                   {agent.role}
                 </span>
-                <p className="text-white/50 text-sm font-body max-w-[280px] mx-auto leading-relaxed">
+                <p className="text-muted-foreground text-sm font-body max-w-[280px] mx-auto leading-relaxed">
                   {agent.bio}
                 </p>
               </div>
@@ -88,13 +88,13 @@ export function Team() {
         </div>
 
         {/* Global CTA */}
-        <div className="mt-24 border-t border-white/10 pt-16 flex flex-col md:flex-row items-center justify-between gap-8">
-          <p className="text-white/60 text-lg md:text-xl max-w-xl text-center md:text-left">
+        <div className="mt-24 border-t border-foreground/10 pt-16 flex flex-col md:flex-row items-center justify-between gap-8">
+          <p className="text-muted-foreground text-lg md:text-xl max-w-xl text-center md:text-left">
             Ready to work with the industry&apos;s most dedicated luxury specialists?
           </p>
           <a
             href="#valuation"
-            className="group flex items-center gap-4 px-12 py-4 rounded-full border border-[#B8965A] text-[#B8965A] text-[12px] font-bold tracking-widest uppercase hover:bg-[#B8965A] hover:text-white transition-all duration-500"
+            className="group flex items-center gap-4 px-12 py-4 rounded-full border border-brand text-brand text-[12px] font-bold tracking-widest uppercase hover:bg-brand hover:text-white transition-all duration-500"
           >
             Connect With Us
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>

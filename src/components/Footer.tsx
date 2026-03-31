@@ -22,14 +22,14 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer id="contact" className="bg-[#1A1A1A] pt-24 pb-12 border-t border-white/5 overflow-hidden">
+    <footer id="contact" className="bg-background pt-24 pb-12 border-t border-foreground/5 overflow-hidden transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
           <div className="col-span-2">
-            <Link href="/" className="text-white text-3xl font-heading tracking-[0.1em] mb-8 block">
-              HAVEN & CO<span className="text-gold">.</span>
+            <Link href="/" className="text-foreground text-3xl font-heading tracking-[0.1em] mb-8 block">
+              HAVEN & CO<span className="text-brand">.</span>
             </Link>
-            <p className="text-white/50 text-xl font-body max-w-sm leading-relaxed mb-8">
+            <p className="text-muted-foreground text-xl font-body max-w-sm leading-relaxed mb-8">
               Redefining luxury real estate through editorial storytelling, data-driven precision, and an unwavering commitment to discretion.
             </p>
             <div className="flex gap-6">
@@ -37,7 +37,7 @@ export function Footer() {
                 href="https://instagram.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="p-3 bg-white/5 rounded-full hover:bg-gold transition-all text-white border border-white/10 hover:border-gold"
+                className="p-3 bg-foreground/5 rounded-full hover:bg-brand transition-all text-foreground hover:text-white border border-foreground/10 hover:border-brand group"
               >
                 <InstagramIcon />
               </a>
@@ -45,7 +45,7 @@ export function Footer() {
                 href="https://linkedin.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="p-3 bg-white/5 rounded-full hover:bg-gold transition-all text-white border border-white/10 hover:border-gold"
+                className="p-3 bg-foreground/5 rounded-full hover:bg-brand transition-all text-foreground hover:text-white border border-foreground/10 hover:border-brand group"
               >
                 <LinkedinIcon />
               </a>
@@ -53,7 +53,7 @@ export function Footer() {
                 href="https://facebook.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="p-3 bg-white/5 rounded-full hover:bg-gold transition-all text-white border border-white/10 hover:border-gold"
+                className="p-3 bg-foreground/5 rounded-full hover:bg-brand transition-all text-foreground hover:text-white border border-foreground/10 hover:border-brand group"
               >
                 <FacebookIcon />
               </a>
@@ -61,7 +61,7 @@ export function Footer() {
                 href="https://twitter.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="p-3 bg-white/5 rounded-full hover:bg-gold transition-all text-white border border-white/10 hover:border-gold"
+                className="p-3 bg-foreground/5 rounded-full hover:bg-brand transition-all text-foreground hover:text-white border border-foreground/10 hover:border-brand group"
               >
                 <TwitterIcon />
               </a>
@@ -69,46 +69,46 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="text-white font-heading text-xl mb-8">Navigation</h4>
+            <h4 className="text-foreground font-heading text-xl mb-8">Navigation</h4>
             <ul className="space-y-4 font-body">
-              <li><Link href="#properties" className="text-white/50 hover:text-gold transition-colors">Featured Listings</Link></li>
-              <li><Link href="#services" className="text-white/50 hover:text-gold transition-colors">Our Services</Link></li>
-              <li><Link href="#team" className="text-white/50 hover:text-gold transition-colors">Meet the Team</Link></li>
-              <li><Link href="#valuation" className="text-white/50 hover:text-gold transition-colors">Property Valuation</Link></li>
+              <li><Link href="#properties" className="text-muted-foreground hover:text-brand transition-colors">Featured Listings</Link></li>
+              <li><Link href="#services" className="text-muted-foreground hover:text-brand transition-colors">Our Services</Link></li>
+              <li><Link href="#team" className="text-muted-foreground hover:text-brand transition-colors">Meet the Team</Link></li>
+              <li><Link href="#valuation" className="text-muted-foreground hover:text-brand transition-colors">Property Valuation</Link></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-white font-heading text-xl mb-8">Contact</h4>
-            <ul className="space-y-4 font-body text-white/50">
+            <h4 className="text-foreground font-heading text-xl mb-8">Contact</h4>
+            <ul className="space-y-4 font-body text-muted-foreground">
               <li>
                 <a 
                   href="mailto:concierge@havenandco.com" 
-                  className="hover:text-white transition-colors underline underline-offset-4 decoration-gold/30 hover:decoration-gold"
+                  className="hover:text-foreground transition-colors underline underline-offset-4 decoration-brand/30 hover:decoration-brand"
                 >
                   concierge@havenandco.com
                 </a>
               </li>
-              <li className="hover:text-white transition-colors">+1 (212) 888 0000</li>
+              <li className="hover:text-foreground transition-colors">+1 (212) 888 0000</li>
               <li>700 Fifth Avenue, 18th Floor,<br />New York, NY 10019</li>
             </ul>
           </div>
         </div>
 
         {/* Brand Watermark for Footer */}
-        <div className="border-t border-white/5 pt-12 text-center relative">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 scale-75 opacity-10 blur-sm pointer-events-none">
-            <span className="text-[120px] font-heading text-gold whitespace-nowrap">EXTREME DISCRETION</span>
+        <div className="border-t border-foreground/5 pt-12 text-center relative">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 scale-75 opacity-5 blur-[2px] pointer-events-none select-none">
+            <span className="text-[120px] font-heading text-brand whitespace-nowrap uppercase tracking-widest">EXTREME DISCRETION</span>
           </div>
 
           <div className="flex flex-col md:flex-row justify-between items-center gap-6 relative z-10">
-            <p className="text-white/30 text-sm font-body tracking-wider">
+            <p className="text-muted-foreground/50 text-sm font-body tracking-wider">
               © {currentYear} HAVEN & CO REAL ESTATE GROUP. ALL RIGHTS RESERVED.
             </p>
-            <div className="flex gap-8 text-[12px] uppercase tracking-[0.2em] font-medium text-white/30">
-              <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
-              <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
-              <button className="hover:text-white transition-colors">Cookie Settings</button>
+            <div className="flex gap-8 text-[12px] uppercase tracking-[0.2em] font-medium text-muted-foreground/50">
+              <Link href="/privacy" className="hover:text-foreground transition-colors">Privacy Policy</Link>
+              <Link href="/terms" className="hover:text-foreground transition-colors">Terms of Service</Link>
+              <button className="hover:text-foreground transition-colors">Cookie Settings</button>
             </div>
           </div>
         </div>

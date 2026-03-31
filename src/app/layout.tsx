@@ -1,17 +1,11 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Plus_Jakarta_Sans } from "next/font/google";
+import { Inter } from "next/font/google"; // Swapping to Inter
+import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
-const cormorant = Cormorant_Garamond({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-cormorant",
-  weight: ["300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
-});
-
-const plusJakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  variable: "--font-plus-jakarta",
+  variable: "--font-inter",
   weight: ["300", "400", "500", "600", "700", "800"],
 });
 
@@ -30,6 +24,7 @@ export const metadata: Metadata = {
     "luxury homes for sale",
     "Haven and Co",
     "real estate agent",
+    "architectural real estate",
   ],
   openGraph: {
     title: "Haven & Co | Premium Luxury Real Estate",
@@ -65,9 +60,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${plusJakarta.variable}`}>
-      <body className="antialiased font-body bg-[#FAFAF8] text-[#1A1A1A]">
-        {children}
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.variable} antialiased font-sans transition-colors duration-300`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light" // Default to light mode per user request
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -67,14 +67,14 @@ export function Testimonials() {
   }, []);
 
   return (
-    <section id="testimonials" className="py-32 px-16 md:px-24 bg-[#FAFAF8] overflow-hidden">
+    <section id="testimonials" className="py-32 px-16 md:px-24 bg-muted/30 overflow-hidden transition-colors duration-500">
       <div className="max-w-7xl mx-auto">
         <div className="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8">
-          <div>
-            <span className="text-gold text-[11px] uppercase tracking-[0.25em] font-medium mb-4 block">
+          <div className="text-left">
+            <span className="text-brand text-[11px] uppercase tracking-[0.25em] font-medium mb-4 block">
               CLIENT STORIES
             </span>
-            <h2 className="text-dark-text text-6xl font-heading leading-tight">
+            <h2 className="text-foreground text-6xl font-heading leading-tight">
               What our <br /> clients say.
             </h2>
           </div>
@@ -82,13 +82,13 @@ export function Testimonials() {
           <div className="flex gap-4">
             <button
               onClick={prev}
-              className="w-14 h-14 rounded-full border border-gold flex items-center justify-center text-gold hover:bg-gold hover:text-white transition-all transform hover:scale-110"
+              className="w-14 h-14 rounded-full border border-brand/30 flex items-center justify-center text-brand hover:bg-brand hover:text-white transition-all transform hover:scale-110"
             >
               <ChevronLeftIcon />
             </button>
             <button
               onClick={next}
-              className="w-14 h-14 rounded-full border border-gold flex items-center justify-center text-gold hover:bg-gold hover:text-white transition-all transform hover:scale-110"
+              className="w-14 h-14 rounded-full border border-brand/30 flex items-center justify-center text-brand hover:bg-brand hover:text-white transition-all transform hover:scale-110"
             >
               <ChevronRightIcon />
             </button>
@@ -111,23 +111,23 @@ export function Testimonials() {
                 return (
                   <div
                     key={item.id}
-                    className="bg-white p-10 rounded-[2rem] border border-[#E5E0D8] shadow-sm flex flex-col justify-between h-[400px] hover:shadow-xl hover:border-gold transition-all duration-500"
+                    className="bg-card p-10 rounded-[2rem] border border-foreground/5 shadow-sm flex flex-col justify-between h-[400px] hover:shadow-xl hover:border-brand/40 transition-all duration-500"
                   >
-                    <div>
+                    <div className="text-left">
                       {/* Rating */}
                       <div className="flex gap-1 mb-8">
                         {[1, 2, 3, 4, 5].map((s) => (
-                          <StarIcon key={s} className="w-4 h-4 fill-gold text-gold" />
+                          <StarIcon key={s} className="w-4 h-4 fill-brand text-brand" />
                         ))}
                       </div>
 
-                      <p className="text-lg md:text-xl font-heading italic text-dark-text leading-relaxed">
+                      <p className="text-lg md:text-xl font-heading italic text-foreground leading-relaxed">
                         &ldquo;{item.quote}&rdquo;
                       </p>
                     </div>
 
-                    <div className="flex items-center gap-4 mt-8 pt-8 border-t border-[#E5E0D8]">
-                      <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-gold shadow-md">
+                    <div className="flex items-center gap-4 mt-8 pt-8 border-t border-foreground/5 text-left">
+                      <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-brand shadow-sm">
                         <Image
                           src={item.image}
                           alt={item.name}
@@ -136,10 +136,10 @@ export function Testimonials() {
                         />
                       </div>
                       <div className="flex flex-col">
-                        <span className="text-dark-text font-bold text-sm tracking-wide">
+                        <span className="text-foreground font-bold text-sm tracking-wide">
                           {item.name}
                         </span>
-                        <span className="text-muted-text text-xs uppercase tracking-widest font-semibold mt-1">
+                        <span className="text-muted-foreground text-xs uppercase tracking-widest font-semibold mt-1">
                           {item.role}
                         </span>
                       </div>

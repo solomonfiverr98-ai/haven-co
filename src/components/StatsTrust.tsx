@@ -71,21 +71,21 @@ export function StatsTrust() {
   return (
     <section 
       ref={containerRef}
-      className="py-32 px-6 md:px-24 bg-[#0A0A0A] text-white overflow-hidden border-t border-white/5"
+      className="py-32 px-6 md:px-24 bg-background text-foreground overflow-hidden border-t border-border/40"
     >
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
           
           {/* Left Side: Stats & Content */}
           <div className="lg:col-span-6 stats-content">
-            <span className="text-gold text-[11px] uppercase tracking-[0.3em] font-light mb-6 block">
+            <span className="text-brand-blue text-[11px] uppercase tracking-[0.3em] font-bold mb-6 block">
               Proven Track Record
             </span>
-            <h2 className="text-4xl md:text-5xl font-heading leading-tight mb-8">
+            <h2 className="text-4xl md:text-5xl font-heading leading-tight mb-8 font-medium">
               Explore Spaces, <br /> 
-              <span className="italic text-white/90">Elevate</span> Your Lifestyle
+              <span className="italic font-light text-brand-blue">Elevate</span> Your Lifestyle
             </h2>
-            <p className="text-white/50 font-body text-lg max-w-xl leading-relaxed mb-16">
+            <p className="text-muted-foreground font-body text-lg max-w-xl leading-relaxed mb-16">
               Our commitment to excellence is reflected in every transaction. We don't just sell properties; 
               we curate architectural legacies that define the future of premium living.
             </p>
@@ -93,10 +93,10 @@ export function StatsTrust() {
             <div className="stats-grid grid grid-cols-2 gap-y-12 gap-x-8 md:gap-x-16">
               {stats.map((stat) => (
                 <div key={stat.label} className="stat-item">
-                  <div className="text-4xl md:text-5xl lg:text-6xl font-heading text-gold font-bold mb-3">
+                  <div className="text-4xl md:text-5xl lg:text-6xl font-heading text-brand-blue font-bold mb-3 tracking-tighter">
                     {stat.value}
                   </div>
-                  <p className="text-[10px] md:text-[11px] uppercase tracking-[0.2em] text-white/40 font-medium">
+                  <p className="text-[10px] md:text-[11px] uppercase tracking-[0.2em] text-muted-foreground font-bold">
                     {stat.label}
                   </p>
                 </div>
@@ -105,17 +105,17 @@ export function StatsTrust() {
           </div>
 
           {/* Right Side: Architectural Detail */}
-          <div className="lg:col-span-6 relative aspect-[4/5] stats-image group">
+          <div className="lg:col-span-6 relative aspect-[4/5] stats-image group overflow-hidden rounded-[2rem]">
             <Image 
               src="/architectural-detail.png" 
               alt="Luxury Architectural Detail"
               fill
-              className="object-cover grayscale hover:grayscale-0 transition-all duration-1000"
+              className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
             />
             {/* Minimalist Overlay lines */}
-            <div className="absolute inset-0 border border-white/10 m-8 pointer-events-none" />
+            <div className="absolute inset-0 border border-white/20 m-8 pointer-events-none rounded-2xl" />
             <div className="absolute top-0 right-0 p-12">
-              <div className="text-white/20 font-mono text-[10px] items-center gap-2 hidden md:flex">
+              <div className="text-white/40 font-mono text-[10px] items-center gap-2 hidden md:flex">
                 <div className="w-12 h-px bg-white/20" />
                 HAVEN & CO / REF_2026
               </div>

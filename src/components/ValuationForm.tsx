@@ -91,43 +91,43 @@ export function ValuationForm() {
     <>
       <section
         id="valuation"
-        className="relative py-24 bg-[#1A1A1A] overflow-hidden"
+        className="relative py-24 bg-background overflow-hidden transition-colors duration-500"
       >
-        {/* Background with Dark Overlay */}
+        {/* Background with Theme Overlay */}
         <div className="absolute inset-0 z-0">
           <Image
             src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1600"
             alt="Luxury Property Interior"
             fill
-            className="object-cover opacity-20"
+            className="object-cover opacity-10 dark:opacity-20"
           />
-          <div className="absolute inset-0 bg-[#1A1A1A]/90" />
+          <div className="absolute inset-0 bg-background/80" />
         </div>
 
         {/* Watermark */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0">
-          <span className="text-[20vw] font-heading text-gold opacity-5 select-none tracking-[0.2em] pointer-events-none">
+          <span className="text-[20vw] font-heading text-brand opacity-5 select-none tracking-[0.2em] pointer-events-none uppercase">
             HAVEN
           </span>
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-16 text-center">
           <div className="mb-16">
-            <span className="text-gold text-[11px] uppercase tracking-[0.25em] font-medium mb-4 block">
+            <span className="text-brand text-[11px] uppercase tracking-[0.25em] font-medium mb-4 block">
               FREE PROPERTY VALUATION
             </span>
-            <h2 className="text-[#F5F5F5] text-7xl font-heading leading-tight mb-6">
+            <h2 className="text-foreground text-7xl font-heading leading-tight mb-6">
               How much is your <br />
-              <span className="italic text-gold">property worth?</span>
+              <span className="italic text-brand font-light">property worth?</span>
             </h2>
-            <p className="text-white/50 text-xl font-body max-w-2xl mx-auto leading-relaxed">
+            <p className="text-muted-foreground text-xl font-body max-w-2xl mx-auto leading-relaxed">
               Get an accurate, no-obligation valuation from our expert team.
               Most valuations completed within 24 hours.
             </p>
           </div>
 
           {/* Valuation Form Card */}
-          <div className="bg-white rounded-[2.5rem] p-12 max-w-2xl mx-auto shadow-2xl border border-[#E5E0D8]">
+          <div className="bg-card rounded-[2.5rem] p-12 max-w-2xl mx-auto shadow-xl border border-foreground/5">
             <form 
               onSubmit={handleSubmit} 
               action={captureLead as any}
@@ -138,7 +138,7 @@ export function ValuationForm() {
                 <div className="space-y-2">
                   <Label
                     htmlFor="name"
-                    className="text-xs uppercase tracking-widest font-bold text-muted-text"
+                    className="text-xs uppercase tracking-widest font-bold text-muted-foreground"
                   >
                     Full Name *
                   </Label>
@@ -148,13 +148,13 @@ export function ValuationForm() {
                     type="text"
                     required
                     placeholder="John Doe"
-                    className="border-0 border-b border-muted-text/30 rounded-none px-0 py-2 focus-visible:ring-0 focus-visible:border-gold transition-all bg-transparent"
+                    className="border-0 border-b border-foreground/10 rounded-none px-0 py-2 focus-visible:ring-0 focus-visible:border-brand transition-all bg-transparent text-foreground placeholder:text-foreground/20"
                   />
                 </div>
                 <div className="space-y-2">
                   <Label
                     htmlFor="email"
-                    className="text-xs uppercase tracking-widest font-bold text-muted-text"
+                    className="text-xs uppercase tracking-widest font-bold text-muted-foreground"
                   >
                     Email Address *
                   </Label>
@@ -164,7 +164,7 @@ export function ValuationForm() {
                     type="email"
                     required
                     placeholder="john@example.com"
-                    className="border-0 border-b border-muted-text/30 rounded-none px-0 py-2 focus-visible:ring-0 focus-visible:border-gold transition-all bg-transparent"
+                    className="border-0 border-b border-foreground/10 rounded-none px-0 py-2 focus-visible:ring-0 focus-visible:border-brand transition-all bg-transparent text-foreground placeholder:text-foreground/20"
                   />
                 </div>
               </div>
@@ -173,7 +173,7 @@ export function ValuationForm() {
                 <div className="space-y-2">
                   <Label
                     htmlFor="phone"
-                    className="text-xs uppercase tracking-widest font-bold text-muted-text"
+                    className="text-xs uppercase tracking-widest font-bold text-muted-foreground"
                   >
                     Phone Number
                   </Label>
@@ -182,13 +182,13 @@ export function ValuationForm() {
                     name="phone"
                     type="tel"
                     placeholder="+1 (555) 000-0000"
-                    className="border-0 border-b border-muted-text/30 rounded-none px-0 py-2 focus-visible:ring-0 focus-visible:border-gold transition-all bg-transparent"
+                    className="border-0 border-b border-foreground/10 rounded-none px-0 py-2 focus-visible:ring-0 focus-visible:border-brand transition-all bg-transparent text-foreground placeholder:text-foreground/20"
                   />
                 </div>
                 <div className="space-y-2">
                   <Label
                     htmlFor="property_address"
-                    className="text-xs uppercase tracking-widest font-bold text-muted-text"
+                    className="text-xs uppercase tracking-widest font-bold text-muted-foreground"
                   >
                     Property Address *
                   </Label>
@@ -198,7 +198,7 @@ export function ValuationForm() {
                     type="text"
                     required
                     placeholder="123 Luxury Way, Highstreet"
-                    className="border-0 border-b border-muted-text/30 rounded-none px-0 py-2 focus-visible:ring-0 focus-visible:border-gold transition-all bg-transparent"
+                    className="border-0 border-b border-foreground/10 rounded-none px-0 py-2 focus-visible:ring-0 focus-visible:border-brand transition-all bg-transparent text-foreground placeholder:text-foreground/20"
                   />
                 </div>
               </div>
@@ -207,15 +207,15 @@ export function ValuationForm() {
                 <div className="space-y-2">
                   <Label
                     htmlFor="property_type"
-                    className="text-xs uppercase tracking-widest font-bold text-muted-text"
+                    className="text-xs uppercase tracking-widest font-bold text-muted-foreground"
                   >
                     Property Type
                   </Label>
                   <Select name="property_type" defaultValue="House">
-                    <SelectTrigger className="border-0 border-b border-muted-text/30 rounded-none px-0 py-2 shadow-none focus:ring-0 focus:border-gold h-auto bg-transparent">
+                    <SelectTrigger className="border-0 border-b border-foreground/10 rounded-none px-0 py-2 shadow-none focus:ring-0 focus:border-brand h-auto bg-transparent text-foreground">
                       <SelectValue placeholder="Select type" />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="bg-card border-foreground/10">
                       <SelectItem value="House">House</SelectItem>
                       <SelectItem value="Apartment">Apartment</SelectItem>
                       <SelectItem value="Villa">Villa</SelectItem>
@@ -226,7 +226,7 @@ export function ValuationForm() {
                 <div className="space-y-2">
                   <Label
                     htmlFor="size_sqft"
-                    className="text-xs uppercase tracking-widest font-bold text-muted-text"
+                    className="text-xs uppercase tracking-widest font-bold text-muted-foreground"
                   >
                     Approximate Size (sqft)
                   </Label>
@@ -235,7 +235,7 @@ export function ValuationForm() {
                     name="size_sqft"
                     type="number"
                     placeholder="2,500"
-                    className="border-0 border-b border-muted-text/30 rounded-none px-0 py-2 focus-visible:ring-0 focus-visible:border-gold transition-all bg-transparent"
+                    className="border-0 border-b border-foreground/10 rounded-none px-0 py-2 focus-visible:ring-0 focus-visible:border-brand transition-all bg-transparent text-foreground placeholder:text-foreground/20"
                   />
                 </div>
               </div>
@@ -243,12 +243,12 @@ export function ValuationForm() {
               <Button
                 type="submit"
                 disabled={isPending}
-                className="w-full bg-gold hover:bg-gold/90 text-white rounded-full py-8 text-xl font-heading shadow-xl transition-all disabled:opacity-50"
+                className="w-full bg-brand hover:bg-brand/90 text-white rounded-full py-8 text-xl font-heading shadow-lg transition-all disabled:opacity-50"
               >
                 {isPending ? "Sending..." : "Request Free Valuation →"}
               </Button>
 
-              <p className="text-center text-[12px] font-body text-muted-text mt-4">
+              <p className="text-center text-[12px] font-body text-muted-foreground mt-4">
                 🔒 Your details are completely confidential. No obligation. No
                 pressure.
               </p>

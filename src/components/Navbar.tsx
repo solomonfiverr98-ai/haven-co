@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
@@ -10,7 +11,6 @@ const navLinks = [
   { name: "About", href: "#team" },
   { name: "Services", href: "#services" },
   { name: "Testimonials", href: "#testimonials" },
-  { name: "Contact", href: "#contact" },
 ];
 
 export function Navbar() {
@@ -18,7 +18,7 @@ export function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -27,23 +27,20 @@ export function Navbar() {
   return (
     <nav
       className={cn(
-        "fixed top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-500",
-        "w-[90%] max-w-4xl px-4 py-2 rounded-full border",
+        "fixed top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 font-sans",
+        "w-[95%] max-w-5xl px-2 py-2 rounded-full border",
         isScrolled
-          ? "bg-white/90 backdrop-blur-md border-border/50 shadow-sm py-3"
-          : "bg-black/20 backdrop-blur-sm border-white/10 py-4"
+          ? "bg-background/80 backdrop-blur-md border-border/50 shadow-lg py-3"
+          : "bg-background/40 backdrop-blur-sm border-border/20 py-4"
       )}
     >
       <div className="flex items-center justify-between px-4">
         {/* Logo */}
         <Link 
           href="/" 
-          className={cn(
-            "font-heading text-xl font-medium tracking-tight whitespace-nowrap",
-            isScrolled ? "text-dark-text" : "text-white"
-          )}
+          className="font-heading text-xl font-bold tracking-tighter whitespace-nowrap text-foreground flex items-center gap-2"
         >
-          ✦ HAVEN & CO
+          <span className="text-brand-blue">✦</span> HAVEN & CO
         </Link>
 
         {/* Nav Links - Desktop */}
@@ -52,23 +49,21 @@ export function Navbar() {
             <Link
               key={link.name}
               href={link.href}
-              className={cn(
-                "text-sm font-medium transition-colors hover:text-gold",
-                isScrolled ? "text-muted-text" : "text-white/70"
-              )}
+              className="text-sm font-medium transition-colors hover:text-brand-blue text-muted-foreground/80 hover:text-foreground"
             >
               {link.name}
             </Link>
           ))}
         </div>
 
-        {/* CTA */}
-        <div className="flex items-center gap-4">
+        {/* Actions */}
+        <div className="flex items-center gap-2 md:gap-4">
+          <ThemeToggle />
           <Button
             asChild
-            className="rounded-full bg-gold hover:bg-gold/90 text-white border-0 px-6 font-semibold"
+            className="hidden sm:flex rounded-full bg-brand-blue hover:bg-brand-blue/90 text-white border-0 px-6 font-semibold"
           >
-            <Link href="#valuation">Get Valuation →</Link>
+            <Link href="#valuation">Get Valuation</Link>
           </Button>
         </div>
       </div>

@@ -32,15 +32,15 @@ const FAQS = [
 
 export function FAQ() {
   return (
-    <section id="faq" className="py-24 bg-[#FAFAF8]">
+    <section id="faq" className="py-24 bg-muted/30 transition-colors duration-500">
       <div className="max-w-4xl mx-auto px-16">
         <div className="text-center mb-16">
-          <span className="text-gold text-[11px] uppercase tracking-[0.25em] font-medium mb-4 block">
+          <span className="text-brand text-[11px] uppercase tracking-[0.25em] font-medium mb-4 block">
             COMMON QUESTIONS
           </span>
-          <h2 className="text-[#1A1A1A] text-5xl font-heading leading-tight mb-6">
+          <h2 className="text-foreground text-5xl font-heading leading-tight mb-6">
             Expertly answered, <br />
-            <span className="italic text-gold">transparently delivered.</span>
+            <span className="italic text-brand font-light">transparently delivered.</span>
           </h2>
         </div>
 
@@ -49,12 +49,12 @@ export function FAQ() {
             <AccordionItem 
               key={index} 
               value={`item-${index}`}
-              className="bg-white border-0 rounded-2xl px-8 py-2 shadow-sm transition-all hover:shadow-md"
+              className="bg-card border border-foreground/5 rounded-2xl px-8 py-2 shadow-sm transition-all hover:shadow-md"
             >
-              <AccordionTrigger className="text-[#1A1A1A] font-heading text-xl text-left hover:no-underline py-6">
+              <AccordionTrigger className="text-foreground font-heading text-xl text-left hover:no-underline py-6 data-[state=open]:text-brand transition-colors">
                 {faq.question}
               </AccordionTrigger>
-              <AccordionContent className="text-muted-text font-body text-lg leading-relaxed pb-6">
+              <AccordionContent className="text-muted-foreground font-body text-lg leading-relaxed pb-6">
                 {faq.answer}
               </AccordionContent>
             </AccordionItem>

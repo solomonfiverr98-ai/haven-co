@@ -8,16 +8,17 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   
-  --font-heading: var(--font-cormorant);
-  --font-body: var(--font-plus-jakarta);
+  --font-heading: var(--font-inter);
+  --font-body: var(--font-inter);
   
-  --color-gold: #B8965A;
-  --color-hero-bg: #0A0A0A;
-  --color-hero-surface: #111111;
-  --color-light-bg: #FAFAF8;
-  --color-light-surface: #F5F2EE;
-  --color-dark-text: #1A1A1A;
-  --color-muted-text: #8A8A8A;
+  --color-brand-blue: #668DAD;
+  --color-brand-accent: #A9BDCC;
+  --color-hero-bg: var(--background);
+  --color-hero-surface: var(--card);
+  --color-light-bg: #F5F5F5;
+  --color-light-surface: #FFFFFF;
+  --color-dark-text: #0A0A0A;
+  --color-muted-text: #6B7280;
   
   --color-ring: var(--ring);
   --color-input: var(--input);
@@ -58,24 +59,24 @@
 }
 
 :root {
-  --background: #FAFAF8;
-  --foreground: #1A1A1A;
+  --background: #F5F5F5;
+  --foreground: #0A0A0A;
   --card: #FFFFFF;
-  --card-foreground: #1A1A1A;
+  --card-foreground: #0A0A0A;
   --popover: #FFFFFF;
-  --popover-foreground: #1A1A1A;
-  --primary: #B8965A;
+  --popover-foreground: #0A0A0A;
+  --primary: #668DAD;
   --primary-foreground: #FFFFFF;
-  --secondary: #F5F2EE;
-  --secondary-foreground: #1A1A1A;
-  --muted: #F5F2EE;
-  --muted-foreground: #8A8A8A;
-  --accent: #F5F2EE;
-  --accent-foreground: #B8965A;
+  --secondary: #E5E7EB;
+  --secondary-foreground: #0A0A0A;
+  --muted: #F3F4F6;
+  --muted-foreground: #6B7280;
+  --accent: #E5E7EB;
+  --accent-foreground: #668DAD;
   --destructive: #EF4444;
-  --border: #E5E0D8;
-  --input: #E5E0D8;
-  --ring: #B8965A;
+  --border: #E5E7EB;
+  --input: #E5E7EB;
+  --ring: #668DAD;
   --radius: 0.75rem;
 }
 
@@ -86,18 +87,18 @@
   --card-foreground: #F5F5F5;
   --popover: #111111;
   --popover-foreground: #F5F5F5;
-  --primary: #B8965A;
+  --primary: #668DAD;
   --primary-foreground: #FFFFFF;
   --secondary: #1A1A1A;
   --secondary-foreground: #F5F5F5;
   --muted: #1A1A1A;
   --muted-foreground: #8A8A8A;
   --accent: #1A1A1A;
-  --accent-foreground: #B8965A;
+  --accent-foreground: #668DAD;
   --destructive: #EF4444;
   --border: #2A2A2A;
   --input: #2A2A2A;
-  --ring: #B8965A;
+  --ring: #668DAD;
 }
 
 @layer base {
@@ -105,30 +106,30 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground font-body;
+    @apply bg-background text-foreground font-sans antialiased;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading;
+    @apply font-heading tracking-tight;
   }
 }
 
 @layer utilities {
   .text-luxury {
-    @apply font-heading tracking-tight;
+    @apply font-heading tracking-tighter;
   }
   .bg-grid-slate {
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-image: linear-gradient(to right, rgba(102, 141, 173, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(102, 141, 173, 0.05) 1px, transparent 1px);
     background-size: 60px 60px;
   }
   .glass-dark {
     @apply bg-black/40 backdrop-blur-xl border border-white/10;
   }
   .glass-light {
-    @apply bg-white/10 backdrop-blur-xl border border-white/20;
+    @apply bg-white/40 backdrop-blur-xl border border-black/5;
   }
-  .gold-gradient {
-    @apply bg-gradient-to-tr from-[#B8965A] to-[#D4B982];
+  .brand-gradient {
+    @apply bg-gradient-to-tr from-[#668DAD] to-[#8BA9C3];
   }
 }
 
