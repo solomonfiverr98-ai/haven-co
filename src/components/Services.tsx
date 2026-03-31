@@ -1,12 +1,18 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowRight } from "lucide-react";
 
-gsap.registerPlugin(ScrollTrigger);
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
+const ArrowRightIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
+  </svg>
+);
 
 const services = [
   {
@@ -23,7 +29,7 @@ const services = [
     id: 2,
     icon: "🔑",
     title: "Property Rentals",
-    description: "Finding reliable tenants and managing your rental property with precision. Stress-free passive income start here.",
+    description: "Finding reliable tenants and managing your rental property with precision. Stress-free passive income starts here.",
     size: "medium",
     className: "bg-white border border-[#E5E0D8] p-10 md:col-span-6 lg:col-span-3 text-dark-text rounded-2xl",
     linkText: "Rentals",
@@ -35,7 +41,7 @@ const services = [
     title: "Property Valuation",
     description: "Get an accurate market valuation of your property — free of charge. No obligation, just expert advice.",
     size: "medium",
-    className: "bg-white border-l-4 border-l-gold border-[#E5E0D8] p-10 md:col-span-6 lg:col-span-4 text-dark-text rounded-2xl",
+    className: "bg-white border-l-4 border-l-gold border border-[#E5E0D8] p-10 md:col-span-6 lg:col-span-4 text-dark-text rounded-2xl",
     linkText: "Get Valuation",
     iconSize: "text-4xl",
   },
@@ -43,21 +49,32 @@ const services = [
 
 export function Services() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
+    if (!containerRef.current) return;
+
     const ctx = gsap.context(() => {
-      gsap.from(".service-card", {
-        y: 60,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.2,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 75%",
-        },
+      cardsRef.current.forEach((card, index) => {
+        if (!card) return;
+        gsap.fromTo(
+          card,
+          { y: 60, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            delay: index * 0.2,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: containerRef.current,
+              start: "top 80%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
       });
-    });
+    }, containerRef);
 
     return () => ctx.revert();
   }, []);
@@ -75,9 +92,10 @@ export function Services() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-          {services.map((service) => (
-            <div 
+          {services.map((service, index) => (
+            <div
               key={service.id}
+              ref={(el) => { cardsRef.current[index] = el; }}
               className={`${service.className} service-card group flex flex-col justify-between hover:shadow-2xl transition-all duration-500`}
             >
               <div>
@@ -93,7 +111,7 @@ export function Services() {
               </div>
 
               <div className="mt-12 flex items-center gap-2 group-hover:gap-4 transition-all text-gold font-semibold text-sm cursor-pointer border-t border-white/10 pt-6">
-                {service.linkText} <ArrowRight className="w-4 h-4" />
+                {service.linkText} <ArrowRightIcon />
               </div>
             </div>
           ))}

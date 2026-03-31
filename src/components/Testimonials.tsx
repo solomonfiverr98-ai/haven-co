@@ -2,9 +2,27 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
+
+/* ─── Custom SVG Icons ─── */
+const ChevronLeftIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="m15 18-6-6 6-6" />
+  </svg>
+);
+
+const ChevronRightIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="m9 18 6-6-6-6" />
+  </svg>
+);
+
+const StarIcon = ({ className }: { className?: string }) => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+  </svg>
+);
 
 const testimonials = [
   {
@@ -60,19 +78,19 @@ export function Testimonials() {
               What our <br /> clients say.
             </h2>
           </div>
-          
+
           <div className="flex gap-4">
-            <button 
+            <button
               onClick={prev}
               className="w-14 h-14 rounded-full border border-gold flex items-center justify-center text-gold hover:bg-gold hover:text-white transition-all transform hover:scale-110"
             >
-              <ChevronLeft className="w-6 h-6" />
+              <ChevronLeftIcon />
             </button>
-            <button 
+            <button
               onClick={next}
               className="w-14 h-14 rounded-full border border-gold flex items-center justify-center text-gold hover:bg-gold hover:text-white transition-all transform hover:scale-110"
             >
-              <ChevronRight className="w-6 h-6" />
+              <ChevronRightIcon />
             </button>
           </div>
         </div>
@@ -80,7 +98,7 @@ export function Testimonials() {
         {/* Carousel Viewport */}
         <div className="relative h-[400px]">
           <AnimatePresence initial={false} mode="wait">
-            <motion.div 
+            <motion.div
               key={currentIndex}
               initial={{ x: 100, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
@@ -91,7 +109,7 @@ export function Testimonials() {
               {[0, 1, 2].map((offset) => {
                 const item = testimonials[(currentIndex + offset) % testimonials.length];
                 return (
-                  <div 
+                  <div
                     key={item.id}
                     className="bg-white p-10 rounded-[2rem] border border-[#E5E0D8] shadow-sm flex flex-col justify-between h-[400px] hover:shadow-xl hover:border-gold transition-all duration-500"
                   >
@@ -99,12 +117,12 @@ export function Testimonials() {
                       {/* Rating */}
                       <div className="flex gap-1 mb-8">
                         {[1, 2, 3, 4, 5].map((s) => (
-                          <Star key={s} className="w-4 h-4 fill-gold text-gold" />
+                          <StarIcon key={s} className="w-4 h-4 fill-gold text-gold" />
                         ))}
                       </div>
-                      
+
                       <p className="text-lg md:text-xl font-heading italic text-dark-text leading-relaxed">
-                        "{item.quote}"
+                        &ldquo;{item.quote}&rdquo;
                       </p>
                     </div>
 

@@ -5,7 +5,6 @@ import Image from "next/image";
 import gsap from "gsap";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Search, MapPin, Home, DollarSign } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -14,6 +13,31 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
+/* ─── Custom SVG Icons ─── */
+const SearchIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" />
+  </svg>
+);
+
+const MapPinIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /><circle cx="12" cy="10" r="3" />
+  </svg>
+);
+
+const HomeIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" /><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+  </svg>
+);
+
+const DollarSignIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="12" x2="12" y1="2" y2="22" /><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+  </svg>
+);
+
 export function Hero() {
   const headingRef = useRef<HTMLDivElement>(null);
   const searchRef = useRef<HTMLDivElement>(null);
@@ -21,7 +45,6 @@ export function Hero() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Headline Animation
       gsap.from(".hero-line", {
         y: 100,
         opacity: 0,
@@ -30,7 +53,6 @@ export function Hero() {
         ease: "power4.out",
       });
 
-      // Search Bar Animation
       gsap.from(searchRef.current, {
         y: 50,
         opacity: 0,
@@ -39,7 +61,6 @@ export function Hero() {
         ease: "power3.out",
       });
 
-      // Stats Animation
       gsap.from(".hero-stat", {
         opacity: 0,
         y: 20,
@@ -73,7 +94,7 @@ export function Hero() {
           <span className="inline-block text-[#B8965A] text-[11px] uppercase tracking-[0.25em] font-medium hero-line">
             ✦ PREMIUM REAL ESTATE
           </span>
-          
+
           <h1 ref={headingRef} className="text-white text-7xl md:text-[96px] leading-[0.95] tracking-tight font-heading">
             <span className="block hero-line">Find Your</span>
             <span className="block hero-line">Perfect</span>
@@ -86,14 +107,14 @@ export function Hero() {
         </div>
 
         {/* Search Bar */}
-        <div 
+        <div
           ref={searchRef}
           className="bg-white/10 backdrop-blur-md border border-white/20 p-4 md:p-6 rounded-2xl max-w-4xl shadow-2xl mr-16"
         >
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
             {/* Location */}
             <div className="flex items-center gap-3 px-3 py-2 border-b md:border-b-0 md:border-r border-white/10">
-              <MapPin className="text-[#B8965A] w-5 h-5" />
+              <span className="text-[#B8965A]"><MapPinIcon /></span>
               <div className="flex flex-col">
                 <span className="text-white/40 text-[10px] uppercase tracking-wider">Location</span>
                 <Select>
@@ -111,7 +132,7 @@ export function Hero() {
 
             {/* Type */}
             <div className="flex items-center gap-3 px-3 py-2 border-b md:border-b-0 md:border-r border-white/10">
-              <Home className="text-[#B8965A] w-5 h-5" />
+              <span className="text-[#B8965A]"><HomeIcon /></span>
               <div className="flex flex-col">
                 <span className="text-white/40 text-[10px] uppercase tracking-wider">Property Type</span>
                 <Select>
@@ -129,7 +150,7 @@ export function Hero() {
 
             {/* Price Range */}
             <div className="flex items-center gap-3 px-3 py-2">
-              <DollarSign className="text-[#B8965A] w-5 h-5" />
+              <span className="text-[#B8965A]"><DollarSignIcon /></span>
               <div className="flex flex-col">
                 <span className="text-white/40 text-[10px] uppercase tracking-wider">Price Range</span>
                 <Select>
@@ -147,13 +168,13 @@ export function Hero() {
 
             {/* CTA */}
             <Button className="bg-[#B8965A] hover:bg-[#C9A86C] text-white rounded-xl py-7 font-semibold transition-all duration-300">
-              Search Properties <Search className="ml-2 w-4 h-4" />
+              Search Properties <span className="ml-2"><SearchIcon /></span>
             </Button>
           </div>
         </div>
 
         {/* Stats */}
-        <div 
+        <div
           ref={statsRef}
           className="flex flex-wrap gap-8 md:gap-16 mt-16 pt-8 border-t border-white/10"
         >

@@ -142,9 +142,9 @@ function PropertyCard({ property }: { property: Property }) {
           </div>
         </div>
 
-        <button className="mt-6 text-[13px] font-semibold text-gold hover:underline transition-all">
+        <a href="#valuation" className="mt-6 inline-block text-[13px] font-semibold text-gold hover:underline transition-all">
           View Property →
-        </button>
+        </a>
       </div>
     </div>
   );
@@ -219,9 +219,9 @@ export function FeaturedProperties() {
         </div>
 
         <div className="flex justify-center mt-20">
-          <button className="px-12 py-4 rounded-full border border-gold text-gold text-sm font-semibold hover:bg-gold hover:text-white transition-all duration-500">
-            View All Properties →
-          </button>
+          <a href="#valuation" className="px-12 py-4 rounded-full border border-gold text-gold text-sm font-semibold hover:bg-gold hover:text-white transition-all duration-500 inline-block">
+            Get Started →
+          </a>
         </div>
       </div>
     </section>

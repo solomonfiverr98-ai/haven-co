@@ -22,7 +22,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#1A1A1A] pt-24 pb-12 border-t border-white/5 overflow-hidden">
+    <footer id="contact" className="bg-[#1A1A1A] pt-24 pb-12 border-t border-white/5 overflow-hidden">
       <div className="max-w-7xl mx-auto px-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
           <div className="col-span-2">
@@ -33,36 +33,43 @@ export function Footer() {
               Redefining luxury real estate through editorial storytelling, data-driven precision, and an unwavering commitment to discretion.
             </p>
             <div className="flex gap-6">
-              <Link href="#" className="p-3 bg-white/5 rounded-full hover:bg-gold transition-all text-white border border-white/10 hover:border-gold">
+              <span className="p-3 bg-white/5 rounded-full hover:bg-gold transition-all text-white border border-white/10 hover:border-gold cursor-pointer">
                 <InstagramIcon />
-              </Link>
-              <Link href="#" className="p-3 bg-white/5 rounded-full hover:bg-gold transition-all text-white border border-white/10 hover:border-gold">
+              </span>
+              <span className="p-3 bg-white/5 rounded-full hover:bg-gold transition-all text-white border border-white/10 hover:border-gold cursor-pointer">
                 <LinkedinIcon />
-              </Link>
-              <Link href="#" className="p-3 bg-white/5 rounded-full hover:bg-gold transition-all text-white border border-white/10 hover:border-gold">
+              </span>
+              <span className="p-3 bg-white/5 rounded-full hover:bg-gold transition-all text-white border border-white/10 hover:border-gold cursor-pointer">
                 <FacebookIcon />
-              </Link>
-              <Link href="#" className="p-3 bg-white/5 rounded-full hover:bg-gold transition-all text-white border border-white/10 hover:border-gold">
+              </span>
+              <span className="p-3 bg-white/5 rounded-full hover:bg-gold transition-all text-white border border-white/10 hover:border-gold cursor-pointer">
                 <TwitterIcon />
-              </Link>
+              </span>
             </div>
           </div>
 
           <div>
             <h4 className="text-white font-heading text-xl mb-8">Navigation</h4>
             <ul className="space-y-4 font-body">
-              <li><Link href="#properties" className="text-white/50 hover:text-gold transition-color">Featured Listings</Link></li>
-              <li><Link href="#services" className="text-white/50 hover:text-gold transition-color">Our Services</Link></li>
-              <li><Link href="#agent" className="text-white/50 hover:text-gold transition-color">Meet the Team</Link></li>
-              <li><Link href="#valuation" className="text-white/50 hover:text-gold transition-color">Property Valuation</Link></li>
+              <li><Link href="#properties" className="text-white/50 hover:text-gold transition-colors">Featured Listings</Link></li>
+              <li><Link href="#services" className="text-white/50 hover:text-gold transition-colors">Our Services</Link></li>
+              <li><Link href="#about" className="text-white/50 hover:text-gold transition-colors">Meet the Team</Link></li>
+              <li><Link href="#valuation" className="text-white/50 hover:text-gold transition-colors">Property Valuation</Link></li>
             </ul>
           </div>
 
           <div>
             <h4 className="text-white font-heading text-xl mb-8">Contact</h4>
             <ul className="space-y-4 font-body text-white/50">
-              <li className="hover:text-white transition-color cursor-pointer underline underline-offset-4 decoration-gold/30 hover:decoration-gold">solomonfiverr98@gmail.com</li>
-              <li className="hover:text-white transition-color cursor-pointer">+1 (555) 789 0123</li>
+              <li>
+                <a 
+                  href="mailto:solomonfiverr98@gmail.com" 
+                  className="hover:text-white transition-colors underline underline-offset-4 decoration-gold/30 hover:decoration-gold"
+                >
+                  solomonfiverr98@gmail.com
+                </a>
+              </li>
+              <li className="hover:text-white transition-colors">+1 (555) 789 0123</li>
               <li>99 Luxury Avenue,<br />New York, NY 10001</li>
             </ul>
           </div>
@@ -73,15 +80,15 @@ export function Footer() {
           <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 scale-75 opacity-10 blur-sm pointer-events-none">
             <span className="text-[120px] font-heading text-gold whitespace-nowrap">EXTREME DISCRETION</span>
           </div>
-          
+
           <div className="flex flex-col md:flex-row justify-between items-center gap-6 relative z-10">
             <p className="text-white/30 text-sm font-body tracking-wider">
               © {currentYear} HAVEN & CO REAL ESTATE GROUP. ALL RIGHTS RESERVED.
             </p>
             <div className="flex gap-8 text-[12px] uppercase tracking-[0.2em] font-medium text-white/30">
-              <Link href="#" className="hover:text-gold transition-color">Privacy Policy</Link>
-              <Link href="#" className="hover:text-gold transition-color">Terms of Service</Link>
-              <Link href="#" className="hover:text-gold transition-color">Cookie Settings</Link>
+              <span className="cursor-default">Privacy Policy</span>
+              <span className="cursor-default">Terms of Service</span>
+              <span className="cursor-default">Cookie Settings</span>
             </div>
           </div>
         </div>

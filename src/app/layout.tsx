@@ -17,7 +17,34 @@ const plusJakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: "Haven & Co | Premium Luxury Real Estate",
-  description: "Exceptional properties. Trusted expertise. Your journey home starts here with Haven & Co.",
+  description:
+    "Exceptional properties. Trusted expertise. Haven & Co delivers a bespoke real estate experience for discerning buyers, sellers, and investors.",
+  keywords: [
+    "luxury real estate",
+    "premium properties",
+    "property valuation",
+    "luxury homes for sale",
+    "Haven and Co",
+    "real estate agent",
+  ],
+  openGraph: {
+    title: "Haven & Co | Premium Luxury Real Estate",
+    description:
+      "Exceptional properties. Trusted expertise. Your journey home starts here with Haven & Co.",
+    type: "website",
+    locale: "en_US",
+    siteName: "Haven & Co",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Haven & Co | Premium Luxury Real Estate",
+    description:
+      "Exceptional properties. Trusted expertise. Your journey home starts here with Haven & Co.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({

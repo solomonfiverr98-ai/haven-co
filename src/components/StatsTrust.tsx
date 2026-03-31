@@ -4,7 +4,9 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const stats = [
   { value: 500, label: "Properties Sold", suffix: "+" },
@@ -15,14 +17,13 @@ const stats = [
 
 export function StatsTrust() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const statRefs = useRef<(HTMLSpanElement | null)[]>([]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Count-up animation logic
-      const elements = gsap.utils.toArray(".stat-number");
-      
-      elements.forEach((el: any) => {
-        const targetValue = parseFloat(el.getAttribute("data-target") || "0");
+      statRefs.current.forEach((el, index) => {
+        if (!el) return;
+        const targetValue = stats[index].value;
         const obj = { value: 0 };
         
         gsap.to(obj, {
@@ -35,7 +36,7 @@ export function StatsTrust() {
           },
           onUpdate: () => {
             if (targetValue % 1 === 0) {
-              el.innerText = Math.floor(obj.value);
+              el.innerText = Math.floor(obj.value).toString();
             } else {
               el.innerText = obj.value.toFixed(1);
             }
@@ -74,13 +75,13 @@ export function StatsTrust() {
             <div className="flex flex-col items-center">
               <div className="flex items-baseline mb-2">
                 {stat.prefix && (
-                  <span className="text-4xl md:text-5xl font-heading text-gold mr-1">
+                  <span className="text-4xl md:text-5xl font-heading text-gold">
                     {stat.prefix}
                   </span>
                 )}
                 <span 
+                  ref={(el) => { statRefs.current[index] = el; }}
                   className="stat-number text-7xl md:text-8xl font-heading text-gold font-bold transition-all duration-300"
-                  data-target={stat.value}
                 >
                   0
                 </span>
