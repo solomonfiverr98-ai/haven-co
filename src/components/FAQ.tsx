@@ -33,12 +33,12 @@ const FAQS = [
 export function FAQ() {
   return (
     <section id="faq" className="py-24 bg-muted/30 transition-colors duration-500">
-      <div className="max-w-4xl mx-auto px-16">
+      <div className="max-w-4xl mx-auto px-6 md:px-16">
         <div className="text-center mb-16">
           <span className="text-brand text-[11px] uppercase tracking-[0.25em] font-medium mb-4 block">
             COMMON QUESTIONS
           </span>
-          <h2 className="text-foreground text-5xl font-heading leading-tight mb-6">
+          <h2 className="text-foreground text-3xl md:text-5xl font-heading leading-tight mb-6">
             Expertly answered, <br />
             <span className="italic text-brand font-light">transparently delivered.</span>
           </h2>

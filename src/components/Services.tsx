@@ -105,7 +105,7 @@ export function Services() {
               <span className="text-brand text-[11px] uppercase tracking-[0.3em] font-medium mb-6 block border-l-2 border-brand pl-4">
                 What We Do
               </span>
-              <h2 className="text-4xl md:text-6xl font-heading leading-[1.1] mb-8 text-foreground">
+              <h2 className="text-3xl sm:text-4xl md:text-6xl font-heading leading-[1.1] mb-8 text-foreground">
                 Complete real estate <br /> 
                 <span className="italic text-foreground/80">services</span> under <br /> 
                 one roof.

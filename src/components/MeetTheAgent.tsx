@@ -24,7 +24,7 @@ const CircleCheckIcon = () => (
 export function MeetTheAgent() {
   return (
     <section id="about" className="py-32 bg-background transition-colors duration-500 overflow-hidden">
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-20 px-16">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-20 px-6 md:px-16">
 
         {/* Left: Agent Photo */}
         <div className="relative w-full lg:w-1/2 h-[600px] rounded-3xl overflow-hidden shadow-2xl group">
@@ -49,7 +49,7 @@ export function MeetTheAgent() {
             YOUR AGENT
           </span>
 
-          <h2 className="text-foreground text-5xl font-heading leading-[1.1] mb-8">
+          <h2 className="text-foreground text-3xl sm:text-4xl md:text-5xl font-heading leading-[1.1] mb-8">
             Trusted expertise. <br />
             Personal service.
           </h2>

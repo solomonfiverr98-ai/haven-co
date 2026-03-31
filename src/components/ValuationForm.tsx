@@ -111,12 +111,12 @@ export function ValuationForm() {
           </span>
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-16 text-center">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-16 text-center">
           <div className="mb-16">
             <span className="text-brand text-[11px] uppercase tracking-[0.25em] font-medium mb-4 block">
               FREE PROPERTY VALUATION
             </span>
-            <h2 className="text-foreground text-7xl font-heading leading-tight mb-6">
+            <h2 className="text-foreground text-3xl sm:text-5xl md:text-7xl font-heading leading-tight mb-6">
               How much is your <br />
               <span className="italic text-brand font-light">property worth?</span>
             </h2>
@@ -127,7 +127,7 @@ export function ValuationForm() {
           </div>
 
           {/* Valuation Form Card */}
-          <div className="bg-card rounded-[2.5rem] p-12 max-w-2xl mx-auto shadow-xl border border-foreground/5">
+          <div className="bg-card rounded-[2.5rem] p-8 sm:p-12 max-w-2xl mx-auto shadow-xl border border-foreground/5">
             <form 
               onSubmit={handleSubmit} 
               action={captureLead as any}

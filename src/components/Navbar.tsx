@@ -45,8 +45,8 @@ export function Navbar() {
               variant="ghost" 
               size="sm" 
               className={cn(
-                "lg:hidden rounded-full px-4 gap-2 transition-colors",
-                isScrolled 
+                "lg:hidden rounded-full px-4 gap-2 transition-colors z-[120]",
+                isScrolled || mobileMenuOpen
                   ? "hover:bg-black/5 dark:hover:bg-white/5 text-muted-foreground hover:text-foreground" 
                   : "hover:bg-white/10 text-white/80 hover:text-white"
               )}
@@ -108,7 +108,7 @@ export function Navbar() {
             <ThemeToggle />
             <Button
               asChild
-              className="hidden sm:flex rounded-full bg-brand-blue hover:bg-brand-blue/90 text-white border-0 px-6 font-bold text-[10px] tracking-widest uppercase shadow-md shadow-brand-blue/10"
+              className="hidden lg:flex rounded-full bg-brand-blue hover:bg-brand-blue/90 text-white border-0 px-6 font-bold text-[10px] tracking-widest uppercase shadow-md shadow-brand-blue/10"
             >
               <Link href="#valuation">Inquire</Link>
             </Button>
@@ -123,7 +123,7 @@ export function Navbar() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-[90] bg-background lg:hidden pt-32 pb-10 px-8 flex flex-col justify-between"
+            className="fixed inset-0 z-[110] bg-background lg:hidden pt-32 pb-10 px-8 flex flex-col justify-between"
           >
             <div className="flex flex-col gap-8">
               {navLinks.map((link, i) => (

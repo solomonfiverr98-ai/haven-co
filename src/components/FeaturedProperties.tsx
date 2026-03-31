@@ -203,7 +203,7 @@ export function FeaturedProperties() {
             <span className="inline-block text-brand text-[11px] uppercase tracking-[0.3em] font-bold mb-4">
               ✦ EXCLUSIVE LISTINGS
             </span>
-            <h2 className="text-foreground text-5xl md:text-7xl font-heading leading-[1.1] tracking-tight">
+            <h2 className="text-foreground text-3xl sm:text-4xl md:text-7xl font-heading leading-[1.1] tracking-tight">
               Curated <span className="italic font-light">Excellence.</span>
             </h2>
           </div>

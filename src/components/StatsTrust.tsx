@@ -81,7 +81,7 @@ export function StatsTrust() {
             <span className="text-brand-blue text-[11px] uppercase tracking-[0.3em] font-bold mb-6 block">
               Proven Track Record
             </span>
-            <h2 className="text-4xl md:text-5xl font-heading leading-tight mb-8 font-medium">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading leading-tight mb-8 font-medium">
               Explore Spaces, <br /> 
               <span className="italic font-light text-brand-blue">Elevate</span> Your Lifestyle
             </h2>

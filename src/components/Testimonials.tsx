@@ -67,14 +67,14 @@ export function Testimonials() {
   }, []);
 
   return (
-    <section id="testimonials" className="py-32 px-16 md:px-24 bg-muted/30 overflow-hidden transition-colors duration-500">
+    <section id="testimonials" className="py-32 px-6 md:px-24 bg-muted/30 overflow-hidden transition-colors duration-500">
       <div className="max-w-7xl mx-auto">
         <div className="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div className="text-left">
             <span className="text-brand text-[11px] uppercase tracking-[0.25em] font-medium mb-4 block">
               CLIENT STORIES
             </span>
-            <h2 className="text-foreground text-6xl font-heading leading-tight">
+            <h2 className="text-foreground text-3xl md:text-6xl font-heading leading-tight">
               What our <br /> clients say.
             </h2>
           </div>
@@ -96,7 +96,7 @@ export function Testimonials() {
         </div>
 
         {/* Carousel Viewport */}
-        <div className="relative h-[400px]">
+        <div className="relative min-h-[400px]">
           <AnimatePresence initial={false} mode="wait">
             <motion.div
               key={currentIndex}
@@ -111,7 +111,7 @@ export function Testimonials() {
                 return (
                   <div
                     key={item.id}
-                    className="bg-card p-10 rounded-[2rem] border border-foreground/5 shadow-sm flex flex-col justify-between h-[400px] hover:shadow-xl hover:border-brand/40 transition-all duration-500"
+                    className="bg-card p-10 rounded-[2rem] border border-foreground/5 shadow-sm flex flex-col justify-between min-h-[400px] hover:shadow-xl hover:border-brand/40 transition-all duration-500"
                   >
                     <div className="text-left">
                       {/* Rating */}

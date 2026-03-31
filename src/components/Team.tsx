@@ -39,7 +39,7 @@ export function Team() {
           <span className="inline-block text-brand text-[11px] uppercase tracking-[0.4em] font-bold mb-4">
             ✦ THE HAVEN COLLECTIVE
           </span>
-          <h2 className="text-foreground text-5xl md:text-7xl font-heading leading-tight tracking-tighter">
+          <h2 className="text-foreground text-3xl sm:text-4xl md:text-7xl font-heading leading-tight tracking-tighter">
             Elite Expertise. <span className="italic font-light text-brand">Personalized.</span>
           </h2>
         </div>

@@ -56,7 +56,7 @@ export function Hero() {
           <span className="text-white text-[10px] font-bold uppercase tracking-[0.25em]">Bespoke Real Estate Collective</span>
         </div>
         
-        <h1 className="text-white text-7xl md:text-[115px] leading-[0.82] tracking-tighter font-heading font-medium drop-shadow-sm">
+        <h1 className="text-white text-4xl sm:text-6xl md:text-[115px] leading-[0.82] tracking-tighter font-heading font-medium drop-shadow-sm">
           More <span className="italic font-light text-brand-blue">Comfortable.</span> <br /> 
           More <span className="italic font-light text-brand-blue">Classy.</span>
         </h1>
@@ -67,7 +67,7 @@ export function Hero() {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-8 pt-8">
-          <Button asChild className="bg-brand-blue hover:bg-brand-blue/90 text-white rounded-full px-14 py-8 text-sm font-bold tracking-[0.15em] uppercase transition-all duration-500 hover:scale-105 shadow-2xl">
+          <Button asChild className="w-full sm:w-auto bg-brand-blue hover:bg-brand-blue/90 text-white rounded-full px-14 py-8 text-sm font-bold tracking-[0.15em] uppercase transition-all duration-500 hover:scale-105 shadow-2xl">
             <a href="#properties">
               Explore Collection <ArrowRight className="ml-2 w-4 h-4" />
             </a>
