@@ -20,6 +20,17 @@ const leadSchema = z.object({
 });
 
 export async function captureLead(formData: FormData) {
+  const hpField = formData.get("hp_field");
+  if (hpField) {
+    // Hidden field was filled - likely a bot. 
+    // We return success to "trick" the bot, but don't actually process.
+    console.warn("Honeypot triggered. Possible bot submission.");
+    return { success: true };
+  }
+
+  // Small delay to discourage rapid automated submissions
+  await new Promise(resolve => setTimeout(resolve, 500));
+
   const data = {
     name: formData.get("name") as string,
     email: formData.get("email") as string,

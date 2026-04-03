@@ -1,6 +1,11 @@
-"use client";
-
+import { useEffect, useRef } from "react";
 import Image from "next/image";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const LinkedInIcon = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
@@ -32,10 +37,46 @@ const agents = [
 ];
 
 export function Team() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    const ctx = gsap.context(() => {
+      // Header Animation
+      gsap.from(".team-header > *", {
+        y: 40,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".team-header",
+          start: "top 80%",
+        },
+      });
+
+      // Agent Cards Stagger
+      gsap.from(".agent-card", {
+        y: 60,
+        opacity: 0,
+        duration: 1.2,
+        stagger: 0.2,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: ".agents-grid",
+          start: "top 75%",
+        },
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section id="team" className="py-32 px-6 md:px-24 bg-background transition-colors duration-500">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-20">
+      <div ref={containerRef} className="max-w-7xl mx-auto">
+        <div className="text-center mb-20 team-header">
           <span className="inline-block text-brand text-[11px] uppercase tracking-[0.4em] font-bold mb-4">
             ✦ THE HAVEN COLLECTIVE
           </span>
@@ -44,9 +85,9 @@ export function Team() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 agents-grid">
           {agents.map((agent, index) => (
-            <div key={index} className="group relative flex flex-col items-center">
+            <div key={index} className="agent-card group relative flex flex-col items-center">
               {/* Image with Border Frame */}
               <div className="relative w-full aspect-[4/5] mb-8 overflow-hidden rounded-[40px] border border-foreground/5 p-2 transition-all duration-700 hover:border-brand/50">
                 <div className="relative w-full h-full overflow-hidden rounded-[32px]">

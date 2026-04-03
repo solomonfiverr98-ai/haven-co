@@ -36,11 +36,11 @@ export function Hero() {
           alt="Luxury House"
           fill
           priority
-          className="object-cover transition-all duration-700 brightness-[0.55] dark:brightness-[0.35] scale-105"
+          className="object-cover transition-all duration-700 brightness-[0.55] dark:brightness-[0.35] scale-[1.15]"
           onLoadingComplete={(img) => {
             gsap.to(img, {
               scale: 1,
-              duration: 2.5,
+              duration: 3,
               ease: "power2.out",
             });
           }}

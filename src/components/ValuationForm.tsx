@@ -135,6 +135,11 @@ export function ValuationForm() {
               className="space-y-8 text-left"
             >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {/* Honeypot Field (Hidden from humans) */}
+                <div style={{ display: "none" }} aria-hidden="true">
+                  <Label htmlFor="hp_field">Do not fill this if you are human</Label>
+                  <Input id="hp_field" name="hp_field" type="text" tabIndex={-1} autoComplete="off" />
+                </div>
                 <div className="space-y-2">
                   <Label
                     htmlFor="name"

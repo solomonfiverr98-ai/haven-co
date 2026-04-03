@@ -1,9 +1,13 @@
-"use client";
-
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const BedIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg>
@@ -110,7 +114,7 @@ function PropertyCard({ property }: { property: Property }) {
   const [isFavorite, setIsFavorite] = useState(false);
 
   return (
-    <div className="group relative bg-card rounded-[32px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-700 border border-foreground/5 hover:border-brand/30">
+    <div className="property-card group relative bg-card rounded-[32px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-700 border border-foreground/5 hover:border-brand/30">
       {/* Image Container */}
       <div className="relative h-[280px] overflow-hidden">
         <Image
@@ -195,18 +199,40 @@ export function FeaturedProperties() {
     return true;
   });
 
-  return (
-    <section id="properties" className="py-32 px-6 md:px-24 bg-muted/30 transition-colors duration-500">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
-          <div className="max-w-2xl text-left">
-            <span className="inline-block text-brand text-[11px] uppercase tracking-[0.3em] font-bold mb-4">
-              ✦ EXCLUSIVE LISTINGS
-            </span>
-            <h2 className="text-foreground text-3xl sm:text-4xl md:text-7xl font-heading leading-[1.1] tracking-tight">
-              Curated <span className="italic font-light">Excellence.</span>
-            </h2>
-          </div>
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+      if (!containerRef.current) return;
+
+      const ctx = gsap.context(() => {
+        gsap.from(".property-card", {
+          y: 60,
+          opacity: 0,
+          duration: 1,
+          stagger: 0.15,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 80%",
+          },
+        });
+      }, containerRef);
+
+      return () => ctx.revert();
+    }, [filteredProperties]);
+
+    return (
+      <section id="properties" className="py-32 px-6 md:px-24 bg-muted/30 transition-colors duration-500">
+        <div ref={containerRef} className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+            <div className="max-w-2xl text-left">
+              <span className="inline-block text-brand text-[11px] uppercase tracking-[0.3em] font-bold mb-4">
+                ✦ EXCLUSIVE LISTINGS
+              </span>
+              <h2 className="text-foreground text-3xl sm:text-4xl md:text-7xl font-heading leading-[1.1] tracking-tight">
+                Curated <span className="italic font-light text-brand">Excellence.</span>
+              </h2>
+            </div>
           
           {/* Filters */}
           <div className="flex gap-2 bg-card p-1.5 rounded-full border border-foreground/5 shadow-sm">
