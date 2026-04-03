@@ -105,7 +105,7 @@ export function StatsTrust() {
           {/* Right Side: Architectural Detail */}
           <div className="lg:col-span-6 relative aspect-[4/5] stats-image group overflow-hidden rounded-[2rem]">
             <Image 
-              src="/architectural-detail.png" 
+              src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=1200" 
               alt="Luxury Architectural Detail"
               fill
               className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"

@@ -61,7 +61,7 @@ const properties: Property[] = [
   },
   {
     id: 3,
-    image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600",
+    image: "https://images.unsplash.com/photo-1613553474179-e1eda3ea5733?auto=format&fit=crop&q=80&w=800",
     price: "$4,500/mo",
     status: "FOR RENT",
     address: "789 Pine Lane",
