@@ -61,10 +61,6 @@ export function Testimonials() {
   const next = () => setCurrentIndex((prev) => (prev + 1) % testimonials.length);
   const prev = () => setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
 
-  useEffect(() => {
-    const timer = setInterval(next, 5000);
-    return () => clearInterval(timer);
-  }, []);
 
   return (
     <section id="testimonials" className="py-32 px-6 md:px-24 bg-muted/30 overflow-hidden transition-colors duration-500">
