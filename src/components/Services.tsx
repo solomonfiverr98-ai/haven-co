@@ -60,7 +60,6 @@ export function Services() {
             y: 0,
             opacity: 1,
             duration: 1,
-            delay: index * 0.2,
             ease: "power3.out",
             scrollTrigger: {
               trigger: item,

@@ -28,8 +28,7 @@ export async function captureLead(formData: FormData) {
     return { success: true };
   }
 
-  // Small delay to discourage rapid automated submissions
-  await new Promise(resolve => setTimeout(resolve, 500));
+  // Hidden field check remains for security
 
   const data = {
     name: formData.get("name") as string,

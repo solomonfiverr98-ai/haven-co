@@ -50,7 +50,6 @@ export function Team() {
         y: 40,
         opacity: 0,
         duration: 1,
-        stagger: 0.2,
         ease: "power3.out",
         scrollTrigger: {
           trigger: ".team-header",
@@ -58,12 +57,11 @@ export function Team() {
         },
       });
 
-      // Agent Cards Stagger
+      // Agent Cards
       gsap.from(".agent-card", {
         y: 60,
         opacity: 0,
         duration: 1.2,
-        stagger: 0.2,
         ease: "power4.out",
         scrollTrigger: {
           trigger: ".agents-grid",

@@ -60,7 +60,6 @@ export function FAQ() {
         y: 40,
         opacity: 0,
         duration: 1,
-        stagger: 0.15,
         ease: "power3.out",
         scrollTrigger: {
           trigger: ".faq-accordion",

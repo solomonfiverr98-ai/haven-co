@@ -30,7 +30,6 @@ export function StatsTrust() {
         y: 40,
         opacity: 0,
         duration: 1,
-        stagger: 0.15,
         ease: "power3.out",
         scrollTrigger: {
           trigger: containerRef.current,
@@ -38,13 +37,12 @@ export function StatsTrust() {
         },
       });
 
-      // Staggered entrance for stats grid items
+      // Stats grid items
       gsap.from(".stat-item", {
         y: 30,
         opacity: 0,
         duration: 1,
-        delay: 0.5,
-        stagger: 0.1,
+        delay: 0.3,
         ease: "power3.out",
         scrollTrigger: {
           trigger: ".stats-grid",

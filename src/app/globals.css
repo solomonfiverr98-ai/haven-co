@@ -149,7 +149,6 @@
     z-index: 9999;
     animation: noise-move 0.2s infinite;
   }
-
   .cursor-dot {
     @apply fixed top-0 left-0 w-1.5 h-1.5 bg-brand-blue rounded-full pointer-events-none z-[10000];
   }
